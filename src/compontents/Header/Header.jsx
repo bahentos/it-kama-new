@@ -1,10 +1,11 @@
 import s from './Header.module.css'
+import logo from '../../assets/logo.png'
 
 const Header = () => {
     return (
         <header className={s.header}>
             <div className={s.logo}>
-                <img src='https://i.pinimg.com/originals/5a/ae/50/5aae503e4f037a5a4375944d8861fb6a.png' />
+                <img src={logo} />
             </div>
         </header>
     )

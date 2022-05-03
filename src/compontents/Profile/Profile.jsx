@@ -1,10 +1,11 @@
 import s from './Profile.module.css'
+import sea from '../../assets/sea_2.jpg'
 
 const Profile = () => {
   return (
     <div className={s.content}>
       <div className={s.image}>
-        <img src="https://trikky.ru/wp-content/blogs.dir/1/files/2020/04/24/g_1-1.jpg" />
+        <img src={sea} />
       </div>
       <div>Avatar + description</div>
       <div>
