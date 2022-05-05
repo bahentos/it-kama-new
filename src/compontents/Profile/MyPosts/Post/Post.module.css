@@ -1,0 +1,22 @@
+.container {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+
+.item {
+    color: var(--main   -blue);
+}
+
+.space {
+    width: 10px;
+}
+
+.avatar {
+
+}
+
+.avatar img {
+    width: 30px;
+    height: 30px;
+}
