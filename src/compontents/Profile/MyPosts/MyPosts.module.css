@@ -1,0 +1,8 @@
+.content {
+    box-sizing: border-box;
+    grid-area: content;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    background-color: var(--bluegray-10);
+  }
