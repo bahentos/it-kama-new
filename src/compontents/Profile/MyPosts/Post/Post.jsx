@@ -1,7 +1,7 @@
 import s from "./Post.module.css";
 import avatar from "../../../../assets/userDefaults.svg";
 
-const Post = () => {
+const Post = (props) => {
   return (
     <>
       <div className={s.container}>
@@ -9,9 +9,9 @@ const Post = () => {
           <img src={avatar} alt="" />
         </div>
         <div className={s.space}></div>
-        <div className={s.item}>Post1</div>
+        <div className={s.item}>{props.message}</div>
       </div>
-      <div className={s.like}>like</div>
+      <div className={s.like}>like {props.like_count}</div>
     </>
   );
 };
