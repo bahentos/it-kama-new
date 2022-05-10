@@ -61,3 +61,16 @@
   grid-template-columns: 2fr 10fr;
   /* grid-gap: 10px; */
 }
+
+.app-wrapper-header {
+  grid-area: header;
+}
+
+.app-wrapper-navbar {
+  grid-area: nav;
+}
+
+.app-wrapper-content {
+  grid-area: content;
+  background-color: var(--bluegray-10);
+}
