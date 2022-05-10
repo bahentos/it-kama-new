@@ -56,9 +56,9 @@
   display: grid;
   grid-template-areas: 
   "header header"
-  "nav content ";
+  "nav cont ";
   grid-template-rows: 60px 1fr;
-  grid-template-columns: 2fr 10fr;
+  grid-template-columns: auto 10fr;
   /* grid-gap: 10px; */
 }
 
@@ -71,6 +71,6 @@
 }
 
 .app-wrapper-content {
-  grid-area: content;
+  grid-area: cont;
   background-color: var(--bluegray-10);
 }

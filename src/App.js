@@ -1,3 +1,4 @@
+import { BrowserRouter, Route, Routes } from "react-router-dom";
 import "./App.css";
 import Dialogs from "./compontents/Dialogs/Dialogs";
 import Header from "./compontents/Header/Header";
@@ -14,11 +15,13 @@ const App = () => {
         <Navbar />
       </div>
       <div className="app-wrapper-content">
-        {/* <Profile /> */}
-        <Dialogs />
+        <Routes>
+          <Route path='/dialogs' element={Dialogs} />
+          <Route path='/profile' elment={Profile} />
+        </Routes>
       </div>
     </div>
-  );
+  )
 };
 
 export default App;
