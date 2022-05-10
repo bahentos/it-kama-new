@@ -4,26 +4,27 @@ import s from './Navbar.module.css'
 const Navbar = () => {
     return (
         <nav className={s.nav}>
-            <div className={s.item + " " + s.profile}>
+            <NavLink to='/profile' 
+            className={s.item + " " + s.profile}>
                 <div className={s.pict} />
-                <NavLink to='/profile'>Profile</NavLink>
-            </div>
-            <div href='/messages' className={s.item + " " + s.messages}>
+                Profile
+            </NavLink>
+            <NavLink to='/dialogs' className={s.item + " " + s.messages}>
                 <div className={s.pict} />
-                <NavLink to='/dialogs'>Messages</NavLink>
-            </div>
-            <div href='/news' className={s.item + " " + s.news}>
+                Messages
+            </NavLink>
+            <NavLink to='/news' className={s.item + " " + s.news}>
                 <div className={s.pict} />
                 News
-            </div>
-            <div href='/music' className={s.item + " " + s.music}>
+            </NavLink>
+            <NavLink to='/music' className={s.item + " " + s.music}>
                 <div className={s.pict} />
                 Music
-            </div>
-            <div href='/settings' className={s.item + " " + s.settings}>
+            </NavLink>
+            <NavLink to='/settings' className={s.item + " " + s.settings}>
                 <div className={s.pict} />
                 Settings
-            </div>
+            </NavLink>
         </nav>
     )
 }

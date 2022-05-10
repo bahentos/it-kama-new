@@ -41,10 +41,6 @@
   background: url("img/settings.svg");
 }
 
-.item.active {
-  color: var(--light-red);
-}
-
 .settings {
   margin-top: 20px
 }
@@ -55,22 +51,19 @@
   background: no-repeat 50% 50%;
 }
 
-.item:link
-{
+/* .item:link {
   color: white;
   text-decoration: none;
 }
-.item:visited
-{
+.item:visited {
   color: white;
   text-decoration: none;
 }
-.item:active
-{
+.item:active {
   color: white;
   text-decoration: none;
-}
+} */
 
-.item.active {
-  background-color: #6410e0;
+.nav a.active {
+  color: coral;
 }

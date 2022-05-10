@@ -1,0 +1,10 @@
+
+.link {
+    color: var(--light-gray-20);
+    text-decoration: none;
+}
+
+.link:active {
+    color:brown;
+    text-decoration: none;
+}
