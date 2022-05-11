@@ -1,10 +1,9 @@
-import { BrowserRouter, Route, Routes } from "react-router-dom";
+import { Route, Routes } from "react-router-dom";
 import "./App.css";
 import Dialogs from "./compontents/Dialogs/Dialogs";
 import Header from "./compontents/Header/Header";
 import Navbar from "./compontents/Navbar/Navbar";
 import Profile from './compontents/Profile/Profile';
-import Test from "./compontents/Test/Test";
 
 const App = () => {
   return (

@@ -6,7 +6,7 @@ const Profile = () => {
   return (
     <div className={s.content}>
       <div className={s.image}>
-        <img src={sea} />
+        <img src={sea} alt='sea'/>
       </div>
       <div>Avatar + description</div>
       <MyPosts />

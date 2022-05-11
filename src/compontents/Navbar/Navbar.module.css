@@ -51,7 +51,7 @@
   background: no-repeat 50% 50%;
 }
 
-/* .item:link {
+.item:link {
   color: white;
   text-decoration: none;
 }
@@ -60,10 +60,6 @@
   text-decoration: none;
 }
 .item:active {
-  color: white;
-  text-decoration: none;
-} */
-
-.nav a.active {
   color: coral;
+  text-decoration: none;
 }
