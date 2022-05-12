@@ -7,18 +7,24 @@ import Profile from './compontents/Profile/Profile';
 
 const App = () => {
   return (
-    <div className="app-wrapper">
-      <div className="app-wrapper-header">
-        <Header />
+    <div className="all-wrapper">
+      <div className="top-container">
+        <div className="header-wrapper">
+          <div className="app-wrapper-header">
+            <Header />
+          </div>
+        </div>
       </div>
-      <div className="app-wrapper-navbar">
-        <Navbar />
-      </div>
-      <div className="app-wrapper-content">
-        <Routes>
-          <Route path='/dialogs' element={<Dialogs/>} />
-          <Route path='/profile' element={<Profile/>} />
-        </Routes>
+      <div className="app-wrapper">
+        <div className="app-wrapper-navbar">
+          <Navbar />
+        </div>
+        <div className="app-wrapper-content">
+          <Routes>
+            <Route path='/dialogs' element={<Dialogs />} />
+            <Route path='/profile' element={<Profile />} />
+          </Routes>
+        </div>
       </div>
     </div>
   )
