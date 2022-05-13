@@ -8,14 +8,14 @@ import Profile from './compontents/Profile/Profile';
 const App = () => {
   return (
     <div className="all-wrapper">
-      <div className="top-container">
-        <div className="header-wrapper">
-          <div className="app-wrapper-header">
-            <Header />
-          </div>
-        </div>
+      <div className="space">
+        <div className="h"></div>
+        <div className="c"></div>
       </div>
       <div className="app-wrapper">
+        <div className="app-wrapper-header">
+          <Header />
+        </div>
         <div className="app-wrapper-navbar">
           <Navbar />
         </div>
@@ -25,6 +25,10 @@ const App = () => {
             <Route path='/profile' element={<Profile />} />
           </Routes>
         </div>
+      </div>
+      <div className="space">
+        <div className="h"></div>
+        <div className="c"></div>
       </div>
     </div>
   )

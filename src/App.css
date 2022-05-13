@@ -54,26 +54,27 @@
 
 .all-wrapper {
   width: 100%;
-  height: 100%;
+  height: 100vh;
   display: grid;
-  justify-items: center;
+  grid-template-columns: auto 1024px auto;
   background-color: #80888E;
 }
 
-.top-container {
-  width: 100%;
-  height: 60px;
+.space {
   display: grid;
-  justify-items: center;
+  grid-template-rows: 60px auto;
+}
+
+.h {
   background-color: var(--light-blue);
 }
 
-.header-wrapper {
-  width: 900px;
-  height: 100%;
+.c {
+  
 }
 
 .app-wrapper-header {
+  grid-area: h;
   height: 100%;
 }
 
@@ -82,7 +83,9 @@
   height: 100%;
   display: grid;
   grid-template-areas: 
+  "h h"
   "nav cont ";
+  grid-template-rows: 60px auto;
   grid-template-columns: auto 10fr;
   /* grid-gap: 10px; */
 }
