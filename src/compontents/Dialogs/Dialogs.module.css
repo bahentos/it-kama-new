@@ -5,14 +5,17 @@
 
 .dialogsItems {
     box-sizing: border-box;
+    display: grid;
+    grid-template-columns: auto;
+}
+
+.dialog {
     padding: 10px;
 }
 
 .messagesItems {
     box-sizing: border-box;
     padding: 10px;
-}
-
-.dialogsItems .active {
-    color: coral;
+    background-color: white;
+    border-radius: 5px;
 }

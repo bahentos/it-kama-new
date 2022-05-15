@@ -21,8 +21,17 @@ const App = () => {
         </div>
         <div className="app-wrapper-content">
           <Routes>
-            <Route path='/dialogs' element={<Dialogs />} />
+            <Route path='/dialogs/' element={<Dialogs />} />
+            <Route path='/dialogs/:id' element={<Dialogs />} />
             <Route path='/profile' element={<Profile />} />
+            <Route
+              path="*"
+              element={
+                <main style={{ padding: "1rem" }}>
+                  <p>There's nothing here!</p>
+                </main>
+              }
+            />
           </Routes>
         </div>
       </div>
