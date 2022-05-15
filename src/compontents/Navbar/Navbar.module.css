@@ -2,7 +2,7 @@
   box-sizing: border-box;
   width: 100%;
   height: 100%;
-  background-color: #241d39;
+  background-color: var(--dark-blue);
   padding: 10px;
 }
 

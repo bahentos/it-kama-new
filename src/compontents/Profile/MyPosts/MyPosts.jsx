@@ -8,8 +8,10 @@ const MyPosts = () => {
     <div className={s.container}>
       My posts
       <div className={s.addtextContainer}>
-        <textarea></textarea>
-        <button>Add post</button>
+        <div className={s.containerTextarea}>
+          <textarea></textarea>
+        </div>
+        <button className={s.btn}>Add post</button>
       </div >
       <div className={s.messageContainer}>
         <Post like_count='2' message='Est et cupidatat minim voluptate eiusmod dolore commodo culpa proident pariatur consectetur.' />
