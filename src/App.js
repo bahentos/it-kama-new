@@ -5,7 +5,7 @@ import Header from "./compontents/Header/Header";
 import Navbar from "./compontents/Navbar/Navbar";
 import Profile from './compontents/Profile/Profile';
 
-const App = () => {
+const App = (props) => {
   return (
     <div className="all-wrapper">
       <div className="space">
@@ -21,9 +21,9 @@ const App = () => {
         </div>
         <div className="app-wrapper-content">
           <Routes>
-            <Route path='/dialogs/' element={<Dialogs />} />
-            <Route path='/dialogs/:id' element={<Dialogs />} />
-            <Route path='/profile' element={<Profile />} />
+            <Route path='/dialogs/' render={<Dialogs props={props} />} />
+            <Route path='/dialogs/:id' element={<Dialogs props={props}  />} />
+            <Route path='/profile' element={<Profile props={props}  />} />
             <Route
               path="*"
               element={
