@@ -9,19 +9,9 @@
     grid-template-columns: auto;
 }
 
-.dialog {
-    padding: 10px;
-}
-
 .messagesItems {
     box-sizing: border-box;
     padding: 10px;
     background-color: white;
     border-radius: 5px;
 }
-
-.dialog:active {
-    transform: translateY(1px);
-    -webkit-filter: saturate(250%);
-    -webkit-filter: brightness(200%);
-  }
