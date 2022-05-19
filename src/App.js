@@ -4,6 +4,7 @@ import Dialogs from "./compontents/Dialogs/Dialogs";
 import Header from "./compontents/Header/Header";
 import Navbar from "./compontents/Navbar/Navbar";
 import Profile from './compontents/Profile/Profile';
+import Test from './compontents/Test/Test.jsx';
 
 const App = (props) => {
   return (
@@ -21,9 +22,9 @@ const App = (props) => {
         </div>
         <div className="app-wrapper-content">
           <Routes>
-            <Route path='/dialogs/' element={<Dialogs messagesData={props.state.dialogsPage.messagesData} dialogsData={props.state.dialogsPage.dialogsData}  />} />
-            <Route path='/dialogs/:id' element={<Dialogs messagesData={props.state.dialogsPage.messagesData} dialogsData={props.state.dialogsPage.dialogsData}  />} />
-            <Route path='/profile' element={<Profile  />} postsData={props.state.profilePage.postsData} />
+            <Route path='/dialogs/' element={<Dialogs dialogsPage={props.state.dialogsPage}/>} />
+            <Route path='/dialogs/:id' element={<Dialogs dialogsPage={props.state.dialogsPage}/>} />
+            <Route path='/profile' element={<Profile postsData={props.state.profilePage.postsData}/>} />
             <Route
               path="*"
               element={

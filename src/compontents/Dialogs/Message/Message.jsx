@@ -1,4 +1,3 @@
-import { NavLink } from "react-router-dom";
 import s from "./Message.module.css";
 
 
@@ -11,4 +10,4 @@ const Message = (props) => {
 }
 
 
-export default <Message></Message>;
+export default Message;
