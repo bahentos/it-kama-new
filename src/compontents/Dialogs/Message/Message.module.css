@@ -1,3 +1,31 @@
-.messages {
-    
-}
+.messagesArea {
+    box-sizing: border-box;
+    background-color: var(--bluegray-10);
+    padding: 20px;
+    display: grid;
+    grid-template-columns: auto;
+    align-items: flex-start;
+  }
+  
+  .messageContainer:nth-child(2n) {
+    justify-self: end;
+  }
+  
+  .messageContainer {
+    position: relative;
+    box-sizing: border-box;
+    padding: 8px;
+    border-radius: 6px;
+    background-color: var(--bluegray-30);
+    width: 37.42%;
+    font-size: 13px;
+    line-height: 1.5;
+  }
+  
+  
+  .messageContainer img {
+    position: absolute;
+    width: 11px;
+    left: -11px;
+    bottom: 10px;
+  }
