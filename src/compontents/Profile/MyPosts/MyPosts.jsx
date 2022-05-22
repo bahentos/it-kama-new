@@ -10,9 +10,9 @@ const MyPosts = (props) => {
   let postsElement = props.postsData.map( (post, index) => <Post like_count={post.like_count} key={index + '_postData'} message={post.post} />)
 
   let addPost = ( ) => {
-    debugger
     let text = newPostElement.current.value
     props.addPost(text)
+    newPostElement.current.value = ''
   }
 
 
