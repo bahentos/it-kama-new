@@ -1,3 +1,4 @@
+import React from "react";
 import DialogItem from "./Dialogitem/DialogItem";
 import s from "./Dialogs.module.css";
 import Message from "./Message/Message";
@@ -6,7 +7,13 @@ import Message from "./Message/Message";
 const Dialogs = (props) => {
 
   let dialogsElement = props.dialogsPage.dialogsData.map( dialog =>  <DialogItem id={dialog.id} name={dialog.name}></DialogItem>)
-  
+  let newMessageElement = React.createRef()
+
+  let addMessage = () => {
+    let text = newMessageElement.current.value
+    alert(text)
+  }
+
   return (
     <>
       <div className={s.container}>
@@ -15,6 +22,15 @@ const Dialogs = (props) => {
         </div>
         <div className={s.messagesItems}>
           <Message messagesData={props.dialogsPage.messagesData} />
+          <div className={s.inputAnswer}>
+            <textarea
+              ref={newMessageElement}
+              rows="1"
+              placeholder="Type your message..."
+            ></textarea>
+            <button
+              onClick={addMessage} ></button>
+          </div>
         </div>
       </div>
     </>
