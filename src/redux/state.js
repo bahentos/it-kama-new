@@ -1,4 +1,7 @@
-import renderEntireTree from "../render"
+let renderEntireTree = () => {
+    console.log('state  changed');
+    
+}
 
 let state = {
     profilePage: {
@@ -33,7 +36,7 @@ let state = {
     }
 }
 //Функции для раздела "Profile"
-export let addPost = () => {
+export const addPost = () => {
     let newPost = {
         id: 5, post: state.profilePage.newPostText, like_count: 0
     }
@@ -42,13 +45,13 @@ export let addPost = () => {
     renderEntireTree(state)
 }
 
-export let update_new_post_text = (new_text) => {
+export const update_new_post_text = (new_text) => {
     state.profilePage.newPostText = new_text
     renderEntireTree(state)
 }
 
 //Функции для раздела "Dialogs"
-export let addMessage = () => {
+export const addMessage = () => {
     let newMessage = {
         id: 5, message: 
         state.dialogsPage.newMessageText
@@ -58,11 +61,16 @@ export let addMessage = () => {
     renderEntireTree(state)
 }
 
-export let update_new_message_text = (new_text) => {
+export const update_new_message_text = (new_text) => {
     state.dialogsPage.newMessageText = new_text
     renderEntireTree(state)
 }
 
+//callback function
+export const subscribe = (observer) => {
+    renderEntireTree = observer
+}
+ 
 export default state;
 
 window.state = state
