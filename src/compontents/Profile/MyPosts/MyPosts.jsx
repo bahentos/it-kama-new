@@ -9,19 +9,25 @@ const MyPosts = (props) => {
   
   let postsElement = props.postsData.map( (post, index) => <Post like_count={post.like_count} key={index + '_postData'} message={post.post} />)
 
-  let addPost = ( ) => {
-    let text = newPostElement.current.value
-    props.addPost(text)
-    newPostElement.current.value = ''
+  let addPost = () => {
+    props.addPost()
   }
 
+  let onChangePost = () => {
+    let text = newPostElement.current.value
+    props.update_new_post_text(text)
+  }
 
   return (
     <div className={s.container}>
       My posts
       <div className={s.addtextContainer}>
         <div className={s.containerTextarea}>
-          <textarea ref={newPostElement} ></textarea>
+          <textarea 
+          ref={newPostElement}
+          onChange={onChangePost}
+          value={props.newPostText}
+          ></textarea>
         </div>
         <button onClick={addPost} className={s.btn}>Add post</button>
       </div >

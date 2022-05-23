@@ -1,6 +1,5 @@
 import renderEntireTree from "../render"
 
-
 let state = {
     profilePage: {
         postsData: [
@@ -8,7 +7,8 @@ let state = {
             { id: 2, post: 'Exercitation et anim minim voluptate ad nisi commodo ipsum commodo ad et elit laboris.' , like_count: 5},
             { id: 3, post: 'Ut velit pariatur ex ex ipsum veniam laboris ipsum tempor ipsum enim velit.' , like_count: 7},
             { id: 4, post: 'Et excepteur do est labore velit deserunt duis.' , like_count: 22},
-          ] 
+          ],
+        newPostText: ''
     },
     
     dialogsPage: {
@@ -26,17 +26,43 @@ let state = {
             { id: 3, message: 'Ea ea nisi voluptate deserunt Lorem proident.' },
             { id: 4, message: 'Lorem fugiat exercitation in magna et laboris cillum amet enim excepteur irure ullamco.' },
             { id: 5, message: 'Labore Lorem et veniam est.' }
-        ]
+        ],
+
+        newMessageText: ''
 
     }
 }
-
-export let addPost = (postMessage) => {
+//Функции для раздела "Profile"
+export let addPost = () => {
     let newPost = {
-        id: 5, post: postMessage, like_count: 0
+        id: 5, post: state.profilePage.newPostText, like_count: 0
     }
     state.profilePage.postsData.push(newPost)
+    state.profilePage.newPostText = ''
+    renderEntireTree(state)
+}
+
+export let update_new_post_text = (new_text) => {
+    state.profilePage.newPostText = new_text
+    renderEntireTree(state)
+}
+
+//Функции для раздела "Dialogs"
+export let addMessage = () => {
+    let newMessage = {
+        id: 5, message: 
+        state.dialogsPage.newMessageText
+    }
+    state.dialogsPage.messagesData.push(newMessage)
+    state.dialogsPage.newMessageText = ''
+    renderEntireTree(state)
+}
+
+export let update_new_message_text = (new_text) => {
+    state.dialogsPage.newMessageText = new_text
     renderEntireTree(state)
 }
 
 export default state;
+
+window.state = state
