@@ -6,7 +6,6 @@ import Navbar from "./compontents/Navbar/Navbar";
 import Profile from './compontents/Profile/Profile';
 
 const App = (props) => {
-  let dialogsProps = 'dialogsPage={props.state.dialogsPage}'
   return (
     <div className="all-wrapper">
       <div className="space">
@@ -22,24 +21,9 @@ const App = (props) => {
         </div>
         <div className="app-wrapper-content">
           <Routes>
-            <Route path='/dialogs/' element={
-              <Dialogs 
-                addMessage={props.addMessage}
-                update_new_message_text={props.update_new_message_text}
-                dialogsPage={props.state.dialogsPage}/>
-              } />
-            <Route path='/dialogs/:id' element={
-              <Dialogs 
-              addMessage={props.addMessage}
-              update_new_message_text={props.update_new_message_text}
-              dialogsPage={props.state.dialogsPage}/>
-            } />
-            <Route path='/profile' element={
-              <Profile 
-              addPost={props.addPost} 
-              update_new_post_text={props.update_new_post_text} 
-              profilePage={props.state.profilePage}/>
-              } />
+            <Route path='/dialogs/' element={<Dialogs state={props.state}/>} />
+            <Route path='/dialogs/:id' element={<Dialogs state={props.state}/>} />
+            <Route path='/profile' element={<Profile state={props.state}/>} />
             <Route
               path="*"
               element={
