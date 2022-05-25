@@ -2,11 +2,11 @@ let store = {
     _state: {
         profilePage: {
             postsData: [
-                { id: 1, post: 'Est et cupidatat minim voluptate eiusmod dolore commodo culpa proident pariatur consectetur.' , like_count: 2},
-                { id: 2, post: 'Exercitation et anim minim voluptate ad nisi commodo ipsum commodo ad et elit laboris.' , like_count: 5},
-                { id: 3, post: 'Ut velit pariatur ex ex ipsum veniam laboris ipsum tempor ipsum enim velit.' , like_count: 7},
-                { id: 4, post: 'Et excepteur do est labore velit deserunt duis.' , like_count: 22},
-              ],
+                { id: 1, post: 'Est et cupidatat minim voluptate eiusmod dolore commodo culpa proident pariatur consectetur.', like_count: 2 },
+                { id: 2, post: 'Exercitation et anim minim voluptate ad nisi commodo ipsum commodo ad et elit laboris.', like_count: 5 },
+                { id: 3, post: 'Ut velit pariatur ex ex ipsum veniam laboris ipsum tempor ipsum enim velit.', like_count: 7 },
+                { id: 4, post: 'Et excepteur do est labore velit deserunt duis.', like_count: 22 },
+            ],
             newPostText: ''
 
         },
@@ -27,54 +27,62 @@ let store = {
                 { id: 5, message: 'Labore Lorem et veniam est.' }
             ],
             newMessageText: '',
-        }, 
+        },
     },
 
     getState() {
         return this._state
     },
 
-    addPost() {
-        let newPost = {
-            id: 5, post: this._state.profilePage.newPostText, like_count: 0
-        }
-        this._state.profilePage.postsData.push(newPost)
-        this._state.profilePage.newPostText = ''
-        this._callSubscriber(this._state)
-    },
-
-    update_new_post_text(new_text){
-        this._state.profilePage.newPostText = new_text
-        this._callSubscriber(this._state)
-    },
-    
-
-    addMessage() {
-        let newMessage = {
-            id: 5, 
-            message: this._state.dialogsPage.newMessageText
-        }
-        this._state.dialogsPage.messagesData.push(newMessage)
-        this._state.dialogsPage.newMessageText = ''
-        this._callSubscriber(this._state)
-    },
-    
-    update_new_message_text(new_text){
-        this._state.dialogsPage.newMessageText = new_text
-        this._callSubscriber(this._state)
-    },
-
     _callSubscriber() {
-        console.log('state  changed');  
+        console.log('state  changed');
     },
-    
-    subscribe(observer){
+
+    subscribe(observer) {
         this._callSubscriber = observer
+    },
+
+    dispatch(action) {
+        switch (action.type) {
+            case 'ADD_POST':
+                let newPost = {
+                    id: 5,
+                    post: this._state.profilePage.newPostText,
+                    like_count: 0
+                }
+                this._state.profilePage.postsData.push(newPost)
+                this._state.profilePage.newPostText = ''
+                this._callSubscriber(this._state)
+                break;
+
+            case 'UPDATE_NEW_POST_TEXT':
+                this._state.profilePage.newPostText = action.new_text
+                this._callSubscriber(this._state)
+                break;
+
+            case 'ADD_MESSAGE':
+                let newMessage = {
+                    id: 5,
+                    message: this._state.dialogsPage.newMessageText
+                }
+                this._state.dialogsPage.messagesData.push(newMessage)
+                this._state.dialogsPage.newMessageText = ''
+                this._callSubscriber(this._state)
+                break;
+
+            case 'UPDATE_NEW_MESSAGE_TEXT':
+                this._state.dialogsPage.newMessageText = action.new_text
+                this._callSubscriber(this._state)
+                break;
+
+            default:
+                break;
+        }
     }
 
 }
 
- 
+
 export default store;
 
 window.state = store;

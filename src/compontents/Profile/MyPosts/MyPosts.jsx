@@ -10,12 +10,11 @@ const MyPosts = (props) => {
   let postsElement = props.postsData.map( (post, index) => <Post like_count={post.like_count} key={index + '_postData'} message={post.post} />)
 
   let addPost = () => {
-    props.addPost()
+    props.dispatch({type: 'ADD_POST',})
   }
 
   let onChangePost = () => {
-    let text = newPostElement.current.value
-    props.update_new_post_text(text)
+    props.dispatch({type: 'UPDATE_NEW_POST_TEXT', new_text: newPostElement.current.value})
   }
 
   return (
