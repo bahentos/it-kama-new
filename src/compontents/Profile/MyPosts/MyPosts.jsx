@@ -1,8 +1,7 @@
 import React from "react";
+import { add_post_action_creator, update_new_post_action_creator } from "../../../redux/state";
 import s from "./MyPosts.module.css";
 import Post from "./Post/Post";
-
-//Какой-то комментарий
 
 const MyPosts = (props) => {
   let newPostElement = React.createRef()
@@ -10,11 +9,11 @@ const MyPosts = (props) => {
   let postsElement = props.postsData.map( (post, index) => <Post like_count={post.like_count} key={index + '_postData'} message={post.post} />)
 
   let addPost = () => {
-    props.dispatch({type: 'ADD_POST',})
+    props.dispatch(add_post_action_creator())
   }
 
   let onChangePost = () => {
-    props.dispatch({type: 'UPDATE_NEW_POST_TEXT', new_text: newPostElement.current.value})
+    props.dispatch(update_new_post_action_creator(newPostElement.current.value))
   }
 
   return (
