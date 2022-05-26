@@ -16,5 +16,6 @@ const DialogsContainer = (props) => {
                   messagesData={props.state.dialogsPage.messagesData} 
                   addMessage={addMessage} 
                   updateTextMessage={updateTextMessage} />)
+}
 
 export default DialogsContainer;

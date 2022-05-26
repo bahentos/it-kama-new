@@ -31,7 +31,7 @@ const Dialogs = (props) => {
               rows="1"
               onChange={onChangeMessage}
               placeholder="Type your message..."
-              value={props.state.dialogsPage.newMessageText}
+              value={props.newMessageText}
             ></textarea>
             <button
               onClick={onAddMessage} ></button>
