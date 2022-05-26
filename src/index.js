@@ -1,6 +1,6 @@
 import React from 'react';
 import reportWebVitals from './reportWebVitals';
-import store from './redux/state'
+import store from './redux/redux_store'
 import ReactDOM from 'react-dom/client';
 import './index.css';
 import App from './App';
@@ -8,7 +8,6 @@ import { BrowserRouter } from 'react-router-dom';
 
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
-
 let renderEntireTree = () => {
   root.render(
     <React.StrictMode>
@@ -18,11 +17,13 @@ let renderEntireTree = () => {
           dispatch={store.dispatch.bind(store)} />
       </BrowserRouter>
     </React.StrictMode>
-  );
+  ); 
 }
 
-store.subscribe(renderEntireTree)
-
+store.subscribe(() => {
+  let state = store.getState()
+  renderEntireTree(state)
+})
 
 renderEntireTree(store.getState())
 
