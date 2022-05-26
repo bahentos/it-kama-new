@@ -21,7 +21,7 @@ let renderEntireTree = () => {
 }
 
 store.subscribe(() => {
-  let state = store.getState()
+  let state = store.getState()   
   renderEntireTree(state)
 })
 
