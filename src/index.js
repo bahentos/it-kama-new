@@ -5,6 +5,7 @@ import ReactDOM from 'react-dom/client';
 import './index.css';
 import App from './App';
 import { BrowserRouter } from 'react-router-dom';
+import StoreContext from './StoreContext';
 
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
@@ -12,16 +13,16 @@ let renderEntireTree = () => {
   root.render(
     <React.StrictMode>
       <BrowserRouter>
-        <App 
-          state={store.getState()}
-          dispatch={store.dispatch.bind(store)} />
+        <StoreContext.Provider value={store}>
+          <App />
+        </StoreContext.Provider>
       </BrowserRouter>
     </React.StrictMode>
-  ); 
+  );
 }
 
 store.subscribe(() => {
-  let state = store.getState()   
+  let state = store.getState()
   renderEntireTree(state)
 })
 

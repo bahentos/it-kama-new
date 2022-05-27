@@ -6,10 +6,7 @@ const Profile = (props) => {
   return (
     <div className={s.content}>
       <ProfileInfo />
-      <MyPostContainer
-        dispatch={props.dispatch}
-        newPostText={props.state.profilePage.newPostText}
-        postsData={props.state.profilePage.postsData} />
+      <MyPostContainer />
     </div>
   );
 };
