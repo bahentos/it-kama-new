@@ -1,15 +1,12 @@
+import * as axios from 'axios'
 import s from './Users.module.css'
+import icon_user from './img/userDefaults.svg'
 
 const Users = (props) => {
     if (props.users.length === 0) {
-        debugger
-        props.set_users(
-            [
-                { id: 1, url: 'https://www.pinclipart.com/picdir/middle/355-3553881_stockvader-predicted-adig-user-profile-icon-png-clipart.png', followed: true, fullName: 'Dmitry', status: 'Id amet culpa amet nostrud.', location: { city: 'Minsk', country: 'Belarus' } },
-                { id: 2, url: 'https://www.pinclipart.com/picdir/middle/355-3553881_stockvader-predicted-adig-user-profile-icon-png-clipart.png', followed: false, fullName: 'Alex', status: 'Ad aute anim voluptate proident duis nisi.', location: { city: 'Moscow', country: 'Russia' } },
-                { id: 3, url: 'https://www.pinclipart.com/picdir/middle/355-3553881_stockvader-predicted-adig-user-profile-icon-png-clipart.png', followed: true, fullName: 'Vano', status: 'Reprehenderit pariatur adipisicing in duis.', location: { city: 'Tbilisy', country: 'Georgia' } },
-            ]
-        )
+        axios.get('https://social-network.samuraijs.com/api/1.0/users').then(response => {
+            props.set_users(response.data.items)
+        })
     }
     let users_divs = props.users.map((user, index) => {
         let follow = (userId) => {
@@ -19,17 +16,17 @@ const Users = (props) => {
             <div className={s.user} key={index + '_user'}>
                 <div className={s.imgContainer}>
                     <div className={s.img}>
-                        <img src={user.url} alt="" />
+                        <img src={user.photos.small != null? user.photos.small : icon_user} alt="" />
                     </div>
                     <button onClick={() => { props.isFollow(user.id) }} className={s.follow}>{user.followed ? 'Follow' : 'Unfollow'}</button>
                 </div>
                 <div className={s.nameContainer}>
-                    <div className={s.name}>{user.fullName}</div>
+                    <div className={s.name}>{user.name}</div>
                     <div className={s.status}>{user.status}</div>
                 </div>
                 <div className={s.locationContainer}>
-                    <div className={s.country}>{user.location.country}</div>
-                    <div className={s.city}>{user.location.city}</div>
+                    <div className={s.country}>{'user.location.country'}</div>
+                    <div className={s.city}>{'user.location.city'}</div>
                 </div>
             </div>
         )

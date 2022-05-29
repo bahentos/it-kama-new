@@ -61,8 +61,6 @@
 }
 
 .locationContainer {
-    display: grid;
-    align-items: start;
     padding-right: 10px;
 }
 
