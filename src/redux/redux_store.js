@@ -15,4 +15,4 @@ let store = createStore(redusers);
 
 export default store;
 
-window.state = store.getState();
+window.store = store
