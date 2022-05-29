@@ -40,6 +40,9 @@
 .settings .pict {
   background: url("img/settings.svg");
 }
+.users .pict {
+  background: url("img/users.svg");
+}
 
 .settings {
   margin-top: 20px

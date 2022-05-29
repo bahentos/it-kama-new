@@ -1,0 +1,77 @@
+.fon {
+    background-color: var(--bluegray-20);
+    height: 100%;
+}
+
+.container {
+    display: grid;
+    grid-template-columns: auto;
+    padding: 10px;
+    gap: 0.5em;
+}
+
+.user {
+    background-color: white;
+    border-radius: 10px;
+    display: grid;
+    grid-template-columns: fit-content(10%) auto fit-content(20%);
+    padding: 10px;
+    box-shadow: 1px 1px 1px var(--bluegray-60);
+}
+
+.imgContainer {
+    display: grid;
+    grid-template-columns: auto;
+    gap: 0.25em;
+    justify-items: center;
+    padding-right: 10px;
+}
+
+.img {
+    width: 50px;
+    height: 50px;
+    border-radius: 25px;
+    overflow: hidden;
+    /* background: url("img/userDefaults.svg"); */
+}
+
+.img img {
+    width: 50px;
+}
+
+.follow {
+
+}
+
+.nameContainer {
+    display: grid;
+    grid-template-columns: auto;
+    gap: 0.25em;
+}
+
+.name {
+    color: var(--dark-blue);
+    font-size: xx-large;
+    font-weight: bold;
+}
+
+.status {
+    color: var(--main-blue);
+    font-size: larger;
+}
+
+.locationContainer {
+    display: grid;
+    align-items: start;
+    padding-right: 10px;
+}
+
+.country {
+    color: var(--ultra-dark-blue);
+    font-size: larger;
+}
+
+.city {
+    color: var(--dark-blue);
+    font-size: large;
+}
