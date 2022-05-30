@@ -3,11 +3,14 @@ import s from './Users.module.css'
 import icon_user from './img/userDefaults.svg'
 
 const Users = (props) => {
-    if (props.users.length === 0) {
-        axios.get('https://social-network.samuraijs.com/api/1.0/users').then(response => {
-            props.set_users(response.data.items)
-        })
+    let getUsers = () => {
+        if (props.users.length === 0) {
+            axios.get('https://social-network.samuraijs.com/api/1.0/users').then(response => {
+                props.set_users(response.data.items)
+            })
+        }
     }
+    
     let users_divs = props.users.map((user, index) => {
         let follow = (userId) => {
             props.isFollow(userId)
@@ -34,6 +37,7 @@ const Users = (props) => {
 
     return (
         <div className={s.fon}>
+                     <button onClick={getUsers}>Get Users</button>
             <div className={s.container}>
                 {users_divs}
             </div>
