@@ -73,3 +73,7 @@
     color: var(--dark-blue);
     font-size: large;
 }
+
+.selectedPage {
+    font-weight: bold;
+}

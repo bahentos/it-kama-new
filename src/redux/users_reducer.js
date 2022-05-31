@@ -2,6 +2,11 @@ const FOLLOW = 'FOLLOW';
 const SET_USERS = 'SET_USERS';
 
 let initial_state = {
+    total_users_count: 20,
+    page_size: 6,
+    page_count: 1,
+    current_page: 1,
+    is_load: false,
     users: []
 }
 

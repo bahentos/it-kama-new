@@ -6,7 +6,12 @@ import Users from "./Users";
 
 let mapStateToProps = (state) => {
   return {
-    users: state.usersPage.users
+    users: state.usersPage.users,
+    page_size: state.usersPage.page_size,
+    page_count: state.usersPage.page_count,
+    total_users_count: state.usersPage.total_users_count,
+    current_page: state.usersPage.current_page,
+    is_load: state.usersPage.is_load
   }
 }
 let mapDispatchToProps = (dispatch) => {
