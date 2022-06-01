@@ -7,7 +7,7 @@ import icon_user from './img/userDefaults.svg'
 
 class Users extends React.Component {
     componentDidMount() {
-        axios.get('https://social-network.samuraijs.com/api/1.0/users').then(response => {
+        axios.get(`https://social-network.samuraijs.com/api/1.0/users?page=${this.props.current_page}&count=${this.props.page_size}`).then(response => {
             this.props.set_users(response.data.items)
         })
     }
@@ -20,7 +20,7 @@ class Users extends React.Component {
             pages.push(i) 
         }
 
-        let users_divs = this.props.users.map((user, index) => {
+        let users_div = this.props.users.map((user, index) => {
             return (
                 <div className={s.user} key={index + '_user'}>
                     <div className={s.imgContainer}>
@@ -42,13 +42,17 @@ class Users extends React.Component {
         })
         return (
             <div className={s.fon}>
+                
+                <div className={s.container}>
                 <div>
                     {pages.map((p, index) => {
-                       return <span className={this.props.current_page === p && s.selectedPage }>{p}</span>
+                       return <span 
+                                className={this.props.current_page === p && s.selectedPage }
+                                onClick={() => this.props.set_current_page(p)}
+                            >{p}</span>
                     })}
                 </div>
-                <div className={s.container}>
-                    {users_divs}
+                    {users_div}
                 </div>
             </div>
         )
