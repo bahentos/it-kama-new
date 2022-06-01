@@ -76,6 +76,7 @@
 
 .pageNumberContainer {
     display: grid;
+    width: 300px; /*TODO*/
     grid-auto-flow: column;
     justify-content: start;
 }
