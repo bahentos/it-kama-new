@@ -1,6 +1,7 @@
 const FOLLOW = 'FOLLOW';
 const SET_USERS = 'SET_USERS';
 const SET_CURRENT_PAGE = 'SET_CURRENT_PAGE';
+const SET_TOTAL_COUNT_USERS = 'SET_TOTAL_COUNT_USERS';
 
 let initial_state = {
     //всего записей пользователей на сервере
@@ -36,6 +37,9 @@ const users_reducer = (state = initial_state, action) => {
         case SET_USERS:
             return {...state, users: [ ...action.users]}
         
+        case SET_TOTAL_COUNT_USERS:
+            return {...state, total_users_count: action.count}
+        
         case SET_CURRENT_PAGE:
             return {...state, current_page: action.page}
         default:
@@ -47,5 +51,6 @@ const users_reducer = (state = initial_state, action) => {
 export let follow_ac = (userId) => ({type: FOLLOW, userId})  
 export let set_users_ac = (users) => ({type: SET_USERS, users})  
 export let set_current_page = (page) => ({type: SET_CURRENT_PAGE, page})  
+export let set_total_count_users = (count) => ({type: SET_TOTAL_COUNT_USERS, count})  
 
 export default users_reducer

@@ -9,6 +9,14 @@ class Users extends React.Component {
     componentDidMount() {
         axios.get(`https://social-network.samuraijs.com/api/1.0/users?page=${this.props.current_page}&count=${this.props.page_size}`).then(response => {
             this.props.set_users(response.data.items)
+            this.props.set_total_count_users(response.data.totalCount)
+        })
+    }
+
+    on_page_change = (p) => {
+        this.props.set_current_page(p)
+        axios.get(`https://social-network.samuraijs.com/api/1.0/users?page=${p}&count=${this.props.page_size}`).then(response => {
+            this.props.set_users(response.data.items)
         })
     }
 
@@ -44,12 +52,13 @@ class Users extends React.Component {
             <div className={s.fon}>
                 
                 <div className={s.container}>
-                <div>
+                <div className={s.pageNumberContainer}>
                     {pages.map((p, index) => {
-                       return <span 
-                                className={this.props.current_page === p && s.selectedPage }
-                                onClick={() => this.props.set_current_page(p)}
-                            >{p}</span>
+                       return <div
+                                key={`pages_${index}`}
+                                className={this.props.current_page === p ? s.pageNumber + ' ' + s.selectedPage : s.pageNumber }
+                                onClick={(e) => this.on_page_change(p)}
+                            >{p}</div>
                     })}
                 </div>
                     {users_div}
