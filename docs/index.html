@@ -12,11 +12,19 @@
   <div id="app"></div>
   <script>
     window.$docsify = {
-      name: '',
-      repo: ''
+      name: '<span>it-kama-new</span>',
+      repo: 'https://github.com/bahentos/it-kama-new',
+      loadNavbar: true,
+      loadSidebar: true,
+      // autoHeader: true,
+      subMaxLevel: 6,
+      logo: './_media/logo.svg'
     }
   </script>
   <!-- Docsify v4 -->
   <script src="//cdn.jsdelivr.net/npm/docsify@4"></script>
+  <!-- sequence-diagram deps -->
+  <script src="https://cdn.jsdelivr.net/npm/mermaid/dist/mermaid.min.js"></script>
+  <script>mermaid.initialize({startOnLoad:true});</script>
 </body>
 </html>
