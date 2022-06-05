@@ -20,15 +20,16 @@
 
   .containerAvatar {
     display: grid;
-    grid-template-columns: 50px fit-content(30%);
+    grid-template-columns: 80px fit-content(30%);
     align-items: center;
     margin-left: 10px;
-    margin-top: -30px;
+    margin-top: -45px;
+    padding-bottom: 10px;
+    
   }
 
   .avatar {
-    width: 50px;
-    height: 50px;
+    border-radius:  40px;
     z-index: 2;
   }
   
@@ -40,4 +41,17 @@
     margin-left: -10px;
     background-color: var(--dark-blue);
     z-index: 1;
+  }
+
+  .socials {
+    display: grid;
+    grid-auto-flow: column;
+    justify-content: start;
+    grid-gap: 5px;
+    margin-left: 10px;
+  }
+
+  .item {
+    width: 25px;
+    cursor: pointer;
   }
