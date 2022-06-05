@@ -18,7 +18,7 @@ const Users = (props) => {
                         <div className={s.img}>
                             <img src={user.photos.small != null ? user.photos.small : icon_user} alt="" />
                         </div>
-                        <button onClick={() => { props.isFollow(user.id) }} className={s.follow}>{user.followed ? 'Follow' : 'Unfollow'}</button>
+                        <button onClick={() => { props.follow(user.id) }} className={s.follow}>{user.followed ? 'Follow' : 'Unfollow'}</button>
                     </div>
                     <div className={s.nameContainer}>
                         <div className={s.name}>{user.name}</div>

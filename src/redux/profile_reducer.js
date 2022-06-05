@@ -34,7 +34,7 @@ const profile_reducer = (state = initial_state, action) => {
 }
 
 
-export let add_post_action_creator = () => ({type: ADD_POST})  
-export let update_new_post_action_creator = (text) => ({type: UPDATE_NEW_POST_TEXT, new_text: text})
+export let add_post= () => ({type: ADD_POST})  
+export let update_new_post = (text) => ({type: UPDATE_NEW_POST_TEXT, new_text: text})
 
 export default profile_reducer
