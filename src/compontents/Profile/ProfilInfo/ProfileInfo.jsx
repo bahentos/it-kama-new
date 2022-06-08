@@ -9,6 +9,7 @@ import github from './img/github_icon.svg'
 import youtube from './img/youtube_icon.svg'
 import maillink from './img/maillink_icon.svg'
 import www from './img/www_icon.svg'
+import { Link, NavLink } from 'react-router-dom'
 
 const ProfileInfo = (props) => {
   return (
