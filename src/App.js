@@ -1,10 +1,10 @@
 import { Route, Routes } from "react-router-dom";
 import "./App.css";
 import DialogsContainer from "./compontents/Dialogs/DialogsContainer";
-import Header from "./compontents/Header/Header";
+import HeaderContainer from "./compontents/Header/HeaderContainer";
 import Navbar from "./compontents/Navbar/Navbar";
 import ProfileContainer from "./compontents/Profile/ProfileContainer";
-import Users_container from "./compontents/Users/Users_container";
+import UsersContainer from "./compontents/Users/UsersContainer";
 
 const App = (props) => {
   return (
@@ -15,7 +15,7 @@ const App = (props) => {
       </div>
       <div className="app-wrapper">
         <div className="app-wrapper-header">
-          <Header />
+          <HeaderContainer />
         </div>
         <div className="app-wrapper-navbar">
           <Navbar />
@@ -26,7 +26,7 @@ const App = (props) => {
             <Route path='/dialogs/:id' element={<DialogsContainer />} />
             <Route path='/profile' element={<ProfileContainer />} />
             <Route path='/profile/:id' element={<ProfileContainer />} />
-            <Route path='/users' element={<Users_container />} />
+            <Route path='/users' element={<UsersContainer />} />
             <Route
               path="*"
               element={

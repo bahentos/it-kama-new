@@ -2,13 +2,14 @@
 import axios from "axios";
 import React from "react";
 import { connect } from "react-redux";
-import { follow, set_current_page, set_total_count_users, set_users, toggle_is_load } from "../../redux/users_reducer";
+import { follow, set_current_page, set_total_count_users, set_users } from "../../redux/users_reducer";
+import { toggle_is_load } from "../../redux/auth_reducer";
 import Users from "./Users";
 import loading from './../../assets/isLoad_5.svg'
 import Preloader from "../Common/Preloader/Preloader";
 
 
-class Users_api_component extends React.Component {
+class UsersApiComponent extends React.Component {
   componentDidMount() {
     this.props.toggle_is_load(true)
     axios.get(`https://social-network.samuraijs.com/api/1.0/users?page=${this.props.current_page}&count=${this.props.page_size}`).then(response => {
@@ -47,9 +48,9 @@ let mapStateToProps = (state) => {
 
 
 
-const Users_container = connect(
+const UsersContainer = connect(
   mapStateToProps,
   { follow, set_users, set_current_page, set_total_count_users, toggle_is_load }
-)(Users_api_component);
+)(UsersApiComponent);
 
-export default Users_container;
+export default UsersContainer;

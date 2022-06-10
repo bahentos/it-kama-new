@@ -2,7 +2,6 @@ const FOLLOW = 'FOLLOW';
 const SET_USERS = 'SET_USERS';
 const SET_CURRENT_PAGE = 'SET_CURRENT_PAGE';
 const SET_TOTAL_COUNT_USERS = 'SET_TOTAL_COUNT_USERS';
-const TOGGLE_IS_LOAD = 'TOGGLE_IS_LOAD';
 
 let initial_state = {
     //всего записей пользователей на сервере
@@ -40,9 +39,6 @@ const users_reducer = (state = initial_state, action) => {
         
         case SET_CURRENT_PAGE:
             return {...state, current_page: action.page}
-        
-        case TOGGLE_IS_LOAD:
-            return {...state, is_load: action.isLoad}
     
         default:
             return state;
@@ -54,6 +50,5 @@ export let follow = (userId) => ({type: FOLLOW, userId})
 export let set_users = (users) => ({type: SET_USERS, users})  
 export let set_current_page = (page) => ({type: SET_CURRENT_PAGE, page})  
 export let set_total_count_users = (count) => ({type: SET_TOTAL_COUNT_USERS, count})  
-export let toggle_is_load = (isLoad) => ({type: TOGGLE_IS_LOAD, isLoad})  
 
 export default users_reducer
