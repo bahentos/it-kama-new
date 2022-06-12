@@ -22,18 +22,22 @@ const Users = (props) => {
                             <img src={user.photos.small != null ? user.photos.small : icon_user} alt="" />
                         </div>
                     </NavLink>
-                    <button onClick={() => {
+                    <button disabled={props.followIsLoad.includes(user.id)} onClick={() => {
                         if (!user.followed) {
+                            props.toggle_follow_is_load(user.id)
                             follow_api.getFollow(user.id).then(response => {
                                 if (response === 0) {
                                     props.follow(user.id)
                                 }
+                                props.toggle_follow_is_load(user.id)
                             })
                         } else {
+                            props.toggle_follow_is_load(user.id)
                             follow_api.deleteFollow(user.id).then(response => {
                                 if (response === 0) {
                                     props.follow(user.id)
                                 }
+                                props.toggle_follow_is_load(user.id)
                             })
                         }
                     }} className={s.follow}>{user.followed ? 'Follow' : 'Unfollow'}</button>
