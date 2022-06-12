@@ -14,7 +14,7 @@
     background-color: white;
     border-radius: 10px;
     display: grid;
-    grid-template-columns: fit-content(10%) auto fit-content(20%);
+    grid-template-columns: fit-content(20%) auto fit-content(20%);
     padding: 10px;
     box-shadow: 1px 1px 1px var(--bluegray-60);
 }
@@ -41,6 +41,10 @@
 
 .follow {
 
+}
+
+.followPreloader {
+    width: 30px
 }
 
 .nameContainer {

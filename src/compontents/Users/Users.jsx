@@ -2,6 +2,7 @@ import React from "react";
 import s from './Users.module.css'
 import icon_user from './img/userDefaults.svg'
 import { NavLink } from "react-router-dom";
+import axios from "axios";
 
 
 const Users = (props) => {
@@ -21,7 +22,34 @@ const Users = (props) => {
                             <img src={user.photos.small != null ? user.photos.small : icon_user} alt="" />
                         </div>
                     </NavLink>
-                    <button onClick={() => { props.follow(user.id) }} className={s.follow}>{user.followed ? 'Follow' : 'Unfollow'}</button>
+                    <button onClick={() => {
+                        if (!user.followed) {
+                            axios.post(`https://social-network.samuraijs.com/api/1.0/follow/${user.id}`, 
+                            {}, 
+                            { 
+                                withCredentials: true,
+                                headers: {
+                                    'API-KEY': 'cdcab232-0ced-49ce-8cad-05303fd09599'
+                                }
+                            }).then(response => {
+                                if (response.data.resultCode === 0) {
+                                    props.follow(user.id)
+                                }
+                            })
+                        } else {
+                            axios.delete(`https://social-network.samuraijs.com/api/1.0/follow/${user.id}`,
+                            { 
+                                withCredentials: true,
+                                headers: {
+                                    'API-KEY': 'cdcab232-0ced-49ce-8cad-05303fd09599'
+                                }
+                            }).then(response => {
+                                if (response.data.resultCode === 0) {
+                                    props.follow(user.id)
+                                }
+                            })
+                        }
+                    }} className={s.follow}>{user.followed ? 'Follow' : 'Unfollow'}</button>
                 </div>
                 <div className={s.nameContainer}>
                     <div className={s.name}>{user.name}</div>
