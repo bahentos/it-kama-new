@@ -2,7 +2,7 @@ import React from "react";
 import s from './Users.module.css'
 import icon_user from './img/userDefaults.svg'
 import { NavLink } from "react-router-dom";
-import axios from "axios";
+import { follow_api } from "../../api/api";
 
 
 const Users = (props) => {
@@ -24,27 +24,14 @@ const Users = (props) => {
                     </NavLink>
                     <button onClick={() => {
                         if (!user.followed) {
-                            axios.post(`https://social-network.samuraijs.com/api/1.0/follow/${user.id}`, 
-                            {}, 
-                            { 
-                                withCredentials: true,
-                                headers: {
-                                    'API-KEY': 'cdcab232-0ced-49ce-8cad-05303fd09599'
-                                }
-                            }).then(response => {
-                                if (response.data.resultCode === 0) {
+                            follow_api.getFollow(user.id).then(response => {
+                                if (response === 0) {
                                     props.follow(user.id)
                                 }
                             })
                         } else {
-                            axios.delete(`https://social-network.samuraijs.com/api/1.0/follow/${user.id}`,
-                            { 
-                                withCredentials: true,
-                                headers: {
-                                    'API-KEY': 'cdcab232-0ced-49ce-8cad-05303fd09599'
-                                }
-                            }).then(response => {
-                                if (response.data.resultCode === 0) {
+                            follow_api.deleteFollow(user.id).then(response => {
+                                if (response === 0) {
                                     props.follow(user.id)
                                 }
                             })

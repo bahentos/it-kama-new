@@ -6,14 +6,14 @@ import { follow, set_current_page, set_total_count_users, set_users, toggle_foll
 import Users from "./Users";
 import loading from './../../assets/isLoad_5.svg'
 import Preloader from "../Common/Preloader/Preloader";
-
+import { users_api } from "../../api/api";
 
 class UsersApiComponent extends React.Component {
   componentDidMount() {
     this.props.toggle_is_load(true)
-    axios.get(`https://social-network.samuraijs.com/api/1.0/users?page=${this.props.current_page}&count=${this.props.page_size}`, {withCredentials: true,}).then(response => {
-      this.props.set_users(response.data.items)
-      this.props.set_total_count_users(response.data.totalCount)
+    users_api.getUsers(this.props.current_page, this.props.page_size).then(response => {
+      this.props.set_users(response.items)
+      this.props.set_total_count_users(response.totalCount)
       this.props.toggle_is_load(false)
     })
   }
@@ -21,8 +21,8 @@ class UsersApiComponent extends React.Component {
   on_page_change = (p) => {
     this.props.set_current_page(p)
     this.props.toggle_is_load(true)
-    axios.get(`https://social-network.samuraijs.com/api/1.0/users?page=${p}&count=${this.props.page_size}`, {withCredentials: true,}).then(response => {
-      this.props.set_users(response.data.items)
+    users_api.getUsers(p, this.props.page_size).then(response => {
+      this.props.set_users(response.items)
       this.props.toggle_is_load(false)
     })
   }
