@@ -1,3 +1,5 @@
+import { auth_api } from "../api/api";
+
 const ADD_PROFILE_USER = 'ADD_PROFILE_USER';
 const TOGGLE_IS_LOAD = 'TOGGLE_IS_LOAD';
 
@@ -28,5 +30,18 @@ const auth_reducer = (state = initial_state, action) => {
 
 export let add_profile_user = (data) => ({ type: ADD_PROFILE_USER, data })
 export let toggle_is_load = (isLoad) => ({type: TOGGLE_IS_LOAD, isLoad})  
+
+//##Thunk - auth_reducer
+export const getAuthThunk = () => {
+    return (dispatch) => {
+        toggle_is_load(true)
+        auth_api.getAuth().then(response => {
+            if (response.resultCode === 0) {
+                add_profile_user(response.data)
+                toggle_is_load(false)
+            }
+        })
+    }
+}
 
 export default auth_reducer

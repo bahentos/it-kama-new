@@ -23,23 +23,7 @@ const Users = (props) => {
                         </div>
                     </NavLink>
                     <button disabled={props.followIsLoad.includes(user.id)} onClick={() => {
-                        if (!user.followed) {
-                            props.toggle_follow_is_load(user.id)
-                            follow_api.getFollow(user.id).then(response => {
-                                if (response === 0) {
-                                    props.follow(user.id)
-                                }
-                                props.toggle_follow_is_load(user.id)
-                            })
-                        } else {
-                            props.toggle_follow_is_load(user.id)
-                            follow_api.deleteFollow(user.id).then(response => {
-                                if (response === 0) {
-                                    props.follow(user.id)
-                                }
-                                props.toggle_follow_is_load(user.id)
-                            })
-                        }
+                        props.followUser(user.followed, user.id)
                     }} className={s.follow}>{user.followed ? 'Follow' : 'Unfollow'}</button>
                 </div>
                 <div className={s.nameContainer}>

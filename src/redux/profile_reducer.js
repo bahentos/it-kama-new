@@ -1,3 +1,5 @@
+import { profile_api } from "../api/api";
+
 const ADD_POST = 'ADD_POST';
 const UPDATE_NEW_POST_TEXT = 'UPDATE_NEW_POST_TEXT';
 const SET_PROFILE = 'SET_PROFILE';
@@ -43,5 +45,15 @@ const profile_reducer = (state = initial_state, action) => {
 export let add_post= () => ({type: ADD_POST})  
 export let update_new_post = (text) => ({type: UPDATE_NEW_POST_TEXT, new_text: text})
 export let set_profile = (profile) => ({type: SET_PROFILE, profile})
+
+
+//##Thunk - profile_reducer
+export const getProfileThunk = (id) => {
+    return (dispatch) => {
+        profile_api.getProfile(id).then(response => {
+            set_profile(response)
+        })
+    }
+}
 
 export default profile_reducer
