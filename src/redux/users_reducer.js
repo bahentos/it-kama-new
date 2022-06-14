@@ -83,32 +83,32 @@ export const getUsers = (current_page, page_size) => {
 
 export const changePage = (page, page_size) => {
     return (dispatch) => {
-        set_current_page(page)
-        toggle_is_load(true)
+        dispatch(set_current_page(page))
+        dispatch(toggle_is_load(true))
         users_api.getUsers(page, page_size = 10).then(response => {
-            set_users(response.items)
-            toggle_is_load(false)
+            dispatch(set_users(response.items))
+            dispatch(toggle_is_load(false))
         })
     }
-}
+} 
 
 export const followUser = (followed, id) => {
     return (dispatch) => {
         if (!followed) {
-            toggle_follow_is_load(id)
+            dispatch(toggle_follow_is_load(id))
             follow_api.getFollow(id).then(response => {
                 if (response === 0) {
-                    follow(id)
+                    dispatch(follow(id))
                 }
-                toggle_follow_is_load(id)
+                dispatch(toggle_follow_is_load(id))
             })
         } else {
-            toggle_follow_is_load(id)
+            dispatch(toggle_follow_is_load(id))
             follow_api.deleteFollow(id).then(response => {
                 if (response === 0) {
-                    follow(id)
+                    dispatch(follow(id))
                 }
-                toggle_follow_is_load(id)
+                dispatch(toggle_follow_is_load(id))
             })
         }
     }

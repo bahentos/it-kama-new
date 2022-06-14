@@ -3,7 +3,6 @@ import { connect } from "react-redux"
 import { getProfileThunk } from '../../redux/profile_reducer'
 import Profile from "./Profile"
 import { useParams } from 'react-router-dom'
-import { profile_api } from "../../api/api"
 
 let Get_user_id = (props) => {
     const params = useParams();

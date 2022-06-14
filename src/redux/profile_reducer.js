@@ -51,7 +51,7 @@ export let set_profile = (profile) => ({type: SET_PROFILE, profile})
 export const getProfileThunk = (id) => {
     return (dispatch) => {
         profile_api.getProfile(id).then(response => {
-            set_profile(response)
+            dispatch(set_profile(response))
         })
     }
 }

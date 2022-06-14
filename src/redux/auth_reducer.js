@@ -34,11 +34,11 @@ export let toggle_is_load = (isLoad) => ({type: TOGGLE_IS_LOAD, isLoad})
 //##Thunk - auth_reducer
 export const getAuthThunk = () => {
     return (dispatch) => {
-        toggle_is_load(true)
+        dispatch(toggle_is_load(true))
         auth_api.getAuth().then(response => {
             if (response.resultCode === 0) {
-                add_profile_user(response.data)
-                toggle_is_load(false)
+                dispatch(add_profile_user(response.data))
+                dispatch(toggle_is_load(false))
             }
         })
     }
