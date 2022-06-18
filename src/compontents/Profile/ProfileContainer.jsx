@@ -2,7 +2,7 @@ import React from "react"
 import { connect } from "react-redux"
 import { getProfileThunk } from '../../redux/profile_reducer'
 import Profile from "./Profile"
-import { useParams } from 'react-router-dom'
+import { Navigate, useParams } from 'react-router-dom'
 
 let Get_user_id = (props) => {
     const params = useParams();
@@ -14,13 +14,19 @@ class ProfileApiContainer extends React.Component {
     }
 
     render() {
-            return (<Profile {...this.props} />)
-        }
+        return (
+            <>
+                <Profile {...this.props} />
+                {!this.props.is_auth && <Navigate to='/login' />}
+            </>
+        )
+    }
 }
 
 let mapStateToProps = (state) => {
     return {
         profile: state.profilePage.profile,
+        is_auth: state.auth.is_auth
     }
 }
 

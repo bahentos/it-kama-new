@@ -6,14 +6,7 @@ import { auth_api } from "../../api/api"
 
 class HeaderApiContainer extends React.Component {
     componentDidMount() {
-        // this.props.getAuthThunk()
-        this.props.toggle_is_load(true)
-        auth_api.getAuth().then(response => {
-            if (response.resultCode === 0) {
-                this.props.add_profile_user(response.data)
-                this.props.toggle_is_load(false)
-            }
-        })
+        this.props.getAuthThunk()
     }
     render() {
         return <Header {...this.props} />

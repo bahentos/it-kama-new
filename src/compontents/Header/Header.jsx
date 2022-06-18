@@ -12,7 +12,6 @@ const Header = (props) => {
             <div className={s.authContainer}>{props.isAuth? 
             <NavLink className={s.btn} to={'/profile'} >{props.login}</NavLink> : 
             <NavLink className={s.btn} to={'/login'} >'login'</NavLink>}
-                <NavLink className={s.btn} to={'/login'} ></NavLink>
             </div>
         </header>
     )
