@@ -10,23 +10,28 @@ import youtube from './img/youtube_icon.svg'
 import maillink from './img/maillink_icon.svg'
 import www from './img/www_icon.svg'
 import { Link, NavLink } from 'react-router-dom'
+import ProfileStatus from './ProfileStatus/ProfileStatus';
 
 const ProfileInfo = (props) => {
   return (
     <div className={s.content}>
       {/* Шапка */}
-      <div className={s.image}>
+      {/* <div className={s.image}>
         <img className={s.fon} src={sea} alt='sea' />
-      </div>
+      </div> */}
       {/* Аватар и имя */}
       <div className={s.containerAvatar}>
-        {!props.profile.photos.small?  
-        <img className={s.avatar} src={userPic} alt="avatar" />
-        : <img className={s.avatar} src={props.profile.photos.small} alt="avatar" />}
+        {!props.profile.photos.small ?
+          <img className={s.avatar} src={userPic} alt="avatar" />
+          : <img className={s.avatar} src={props.profile.photos.small} alt="avatar" />}
         <div className={s.name}>{props.profile.fullName}</div>
       </div>
-      {props.profile.aboutMe && <div className={s.aboutMe} >{props.profile.aboutMe}</div>}
-      {props.profile.lookingForAJob && <div className={s.jobMessage}>{props.profile.lookingForAJobDescription}</div>}
+      {/* Статус */}
+      <div className={s.aboutText} >
+        <ProfileStatus {...props} status='Какой-то статус!' />
+        {props.profile.aboutMe && <div className={s.aboutMe}  >{props.profile.aboutMe}</div>}
+        {props.profile.lookingForAJob && <div className={s.jobMessage}>{props.profile.lookingForAJobDescription}</div>}
+      </div>
       <div className={s.socials}>
         {props.profile.contacts.facebook != null ? <a href={props.profile.contacts.facebook} className={s.item}><img src={facebook} alt="" /></a> : null}
         {props.profile.contacts.vk != null ? <a href={props.profile.contacts.vk} className={s.item}><img src={vk} alt="" /></a> : null}

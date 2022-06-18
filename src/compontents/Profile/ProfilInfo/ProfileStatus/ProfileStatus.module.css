@@ -1,0 +1,9 @@
+.container {
+    padding-bottom: 10px;
+}
+
+.status {
+    font-size: x-large;
+    font-weight: 500;
+    color: var(--dark-blue);
+}
