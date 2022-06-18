@@ -4,6 +4,7 @@ import { getProfileThunk } from '../../redux/profile_reducer'
 import Profile from "./Profile"
 import { Navigate, useParams } from 'react-router-dom'
 import { withAuthRedirect } from '../../hoc/withAuthRedirect';
+import { compose } from 'redux';
 
 let Get_user_id = (props) => {
     const params = useParams();
@@ -26,8 +27,8 @@ let mapStateToProps = (state) => {
     }
 }
 
-let AuthRedirect = withAuthRedirect(Get_user_id)
 
-const ProfileContainer = connect(mapStateToProps, { getProfileThunk })(AuthRedirect)
-
-export default ProfileContainer
+export default compose(
+    connect(mapStateToProps, { getProfileThunk }),
+    withAuthRedirect,
+)(Get_user_id)

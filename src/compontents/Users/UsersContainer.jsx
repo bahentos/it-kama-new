@@ -11,6 +11,7 @@ import Users from "./Users";
 import loading from './../../assets/isLoad_5.svg'
 import Preloader from "../Common/Preloader/Preloader";
 import { withAuthRedirect } from '../../hoc/withAuthRedirect';
+import { compose } from 'redux';
 
 class UsersApiComponent extends React.Component {
   componentDidMount() {
@@ -40,14 +41,7 @@ let mapStateToProps = (state) => {
 }
 
 
-let AuthRedirect = withAuthRedirect(UsersApiComponent)
-
-const UsersContainer = connect(
-  mapStateToProps,
-  {
-    toggle_follow_is_load, getUsers,
-    changePage, followUser
-  }
-)(AuthRedirect);
-
-export default UsersContainer;
+export default compose(
+  connect(mapStateToProps,{toggle_follow_is_load, getUsers, changePage, followUser}),
+  withAuthRedirect
+)(UsersApiComponent)
