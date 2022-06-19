@@ -23,7 +23,7 @@ export const users_api = {
 
 export const profile_api = {
   getProfile (id) {
-    return axios.get(`profile/${!id ? 2 : id}`).then(response => {
+    return axios.get(`profile/${!id ? 1608 : id}`).then(response => {
       return response.data
     })
   },

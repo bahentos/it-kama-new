@@ -7,7 +7,7 @@ const SET_STATUS = 'SET_STATUS';
 
 let initial_state = {
     profile: null,
-    status: null,
+    status: '',
 
     postsData: [
         { id: 1, post: 'Est et cupidatat minim voluptate eiusmod dolore commodo culpa proident pariatur consectetur.', like_count: 2 },

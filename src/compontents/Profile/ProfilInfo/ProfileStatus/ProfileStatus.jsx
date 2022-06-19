@@ -8,18 +8,24 @@ class ProfileStatus extends React.Component {
     }
 
     toggleEditStatus = () => {
-        this.setState({editMode: !this.state.editMode})
+        this.setState({ editMode: !this.state.editMode })
     }
 
     updateStatus = (event) => {
         event.repeat = false
-        if(event.code === 'Enter') {
+        if (event.code === 'Enter') {
             this.props.updateStatusThunk(this.state.status)
         }
     }
 
     onChangeStatus = (event) => {
-        this.setState({status: event.currentTarget.value})
+        this.setState({ status: event.currentTarget.value })
+    }
+
+    componentDidUpdate(prevProps, prevState) {
+        if (prevProps.status !== this.props.status) {
+            this.setState({ status: this.props.status })
+        }
     }
 
     render() {
@@ -28,12 +34,12 @@ class ProfileStatus extends React.Component {
                 {!this.state.editMode ?
                     <div onDoubleClick={this.toggleEditStatus} className={s.status} >{this.props.status || '----------'}</div> :
                     <input
-                    onChange={this.onChangeStatus}
-                    onKeyDown={this.updateStatus}
-                    onBlur={this.toggleEditStatus} 
-                    autoFocus={true} 
-                    value={this.state.status} 
-                    className={s.status} />
+                        onChange={this.onChangeStatus}
+                        onKeyDown={this.updateStatus}
+                        onBlur={this.toggleEditStatus}
+                        autoFocus={true}
+                        value={this.state.status}
+                        className={s.status} />
                 }
             </div>
         )
