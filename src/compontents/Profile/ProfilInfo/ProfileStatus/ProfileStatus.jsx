@@ -3,23 +3,36 @@ import s from "./ProfileStatus.module.css";
 
 class ProfileStatus extends React.Component {
     state = {
-        editMode: false
+        editMode: false,
+        status: this.props.status
     }
 
-    toggleEditStatus () {
+    toggleEditStatus = () => {
         this.setState({editMode: !this.state.editMode})
+    }
+
+    updateStatus = (event) => {
+        event.repeat = false
+        if(event.code === 'Enter') {
+            this.props.updateStatusThunk(this.state.status)
+        }
+    }
+
+    onChangeStatus = (event) => {
+        this.setState({status: event.currentTarget.value})
     }
 
     render() {
         return (
-            this.props.status &&
             <div className={s.container} >
                 {!this.state.editMode ?
-                    <div onDoubleClick={this.toggleEditStatus.bind(this)} className={s.status} >{this.props.status}</div> :
-                    <input 
-                    onBlur={this.toggleEditStatus.bind(this)} 
+                    <div onDoubleClick={this.toggleEditStatus} className={s.status} >{this.props.status || '----------'}</div> :
+                    <input
+                    onChange={this.onChangeStatus}
+                    onKeyDown={this.updateStatus}
+                    onBlur={this.toggleEditStatus} 
                     autoFocus={true} 
-                    value={this.props.status} 
+                    value={this.state.status} 
                     className={s.status} />
                 }
             </div>

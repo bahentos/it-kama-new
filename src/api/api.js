@@ -26,6 +26,18 @@ export const profile_api = {
     return axios.get(`profile/${!id ? 2 : id}`).then(response => {
       return response.data
     })
+  },
+
+  getStatus (id) {
+    return axios.get(`profile/status/${id}`).then(response => {
+      return response.data
+    })
+  },
+
+  putStatus (status) {
+    return axios.put(`profile/status`, {status: status} ).then(response => {
+      return response.data
+    })
   }
 }
 
@@ -50,12 +62,3 @@ export const auth_api = {
     })
   }
 }
-// export const auth_api = {
-//   getAuth () {
-//     return axios.get(`https://social-network.samuraijs.com/api/1.0/auth/me`, {
-//       withCredentials: true
-//     }).then(response => {
-//       return response.data
-//     })
-//   }
-// }
