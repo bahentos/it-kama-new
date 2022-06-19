@@ -1,12 +1,46 @@
 .container {
     display: grid;
     height: 100vh;
-    align-items: center;
+    grid-auto-flow: row;
+    align-items: flex-start;
     justify-content: center;
+    padding-top: 1em;
+}
+
+.formContainer {
+    display: grid;
+    grid-auto-flow: row;
+    grid-gap: 10px;
+}
+
+.form {
+    display: grid;
+    grid-auto-flow: row;
+    grid-gap: 10px;
 }
 
 .text {
     font-size: xx-large;
     font-weight: 900;
     color: var(--dark-blue);
+}
+
+.login {
+
+}
+
+.pass {
+
+}
+
+.remember {
+
+}
+
+.submit {
+    
+}
+
+.btn {
+
 }
