@@ -7,7 +7,7 @@ import sidebar_reducer from "./sidebar_reducer";
 import users_reducer from "./users_reducer";
 import { reducer as formReducer } from 'redux-form'
 
-let redusers = combineReducers({
+let reducers = combineReducers({
     profilePage: profile_reducer,
     dialogsPage: dialogs_reducer,
     sidebarPage: sidebar_reducer,
@@ -17,7 +17,7 @@ let redusers = combineReducers({
 })
 
 
-let store = createStore(redusers, applyMiddleware(thunk));
+let store = createStore(reducers, applyMiddleware(thunk));
 
 
 export default store;
