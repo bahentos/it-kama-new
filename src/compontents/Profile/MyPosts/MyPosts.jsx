@@ -1,30 +1,8 @@
 import React from "react";
-import { Field, reduxForm, reset } from "redux-form";
+import { reset } from "redux-form";
 import s from "./MyPosts.module.css";
 import Post from "./Post/Post";
-
-const ProfilePost = (props) => {
-  const { handleSubmit, pristine, submitting } = props
-  return (
-    <form onSubmit={handleSubmit} className={s.addtextContainer}>
-      <div className={s.containerTextarea}>
-        <Field
-          component='textarea'
-          name='profile_post'
-        ></Field>
-      </div>
-      <button
-        disabled={pristine || submitting}
-        className={s.btn}>Add post</button>
-    </form >
-  )
-}
-
-const ProfilePostForm = reduxForm({
-  form: 'profile_post'
-})(ProfilePost)
-
-// export default ProfilePostForm
+import ProfilePostForm from "./ProfilePostForm/ProfilePostForm";
 
 
 const MyPosts = (props) => {
