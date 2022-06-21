@@ -15,7 +15,6 @@ let initial_state = {
         { id: 3, post: 'Ut velit pariatur ex ex ipsum veniam laboris ipsum tempor ipsum enim velit.', like_count: 7 },
         { id: 4, post: 'Et excepteur do est labore velit deserunt duis.', like_count: 22 },
     ],
-    newPostText: ''
 }
 
 const profile_reducer = (state = initial_state, action) => {
@@ -23,17 +22,13 @@ const profile_reducer = (state = initial_state, action) => {
         case ADD_POST:
             let newPost = {
                 id: 5,
-                post: state.newPostText,
+                post: action.post,
                 like_count: 0
             }
             return {
                 ...state,
                 postsData: [...state.postsData, newPost],
-                newPostText: ''
             }
-
-        case UPDATE_NEW_POST_TEXT: 
-            return {...state, newPostText: action.new_text}
         
         case SET_PROFILE: 
             return {...state, profile: action.profile}
@@ -47,8 +42,7 @@ const profile_reducer = (state = initial_state, action) => {
 }
 
 
-export let add_post= () => ({type: ADD_POST})  
-export let update_new_post = (text) => ({type: UPDATE_NEW_POST_TEXT, new_text: text})
+export let add_post= (post) => ({type: ADD_POST, post})  
 export let set_profile = (profile) => ({type: SET_PROFILE, profile})
 export let set_status = (status) => ({type: SET_STATUS, status})
 
