@@ -20,7 +20,7 @@ const DialogsMessage = (props) => {
   )
 }
 
-const DialogsMessageForm = reduxForm({
+const DialogsMessageForm  =  reduxForm({
   form: 'dialogs_message'
 })(DialogsMessage)
 
