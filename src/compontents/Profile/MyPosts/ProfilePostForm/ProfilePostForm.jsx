@@ -1,8 +1,10 @@
 import React from "react";
 import { Field, reduxForm } from "redux-form";
 import s from "./ProfilePostForm.module.css";
-import { requiredField } from '../../../Common/Validators/validators';
-import TextArea from "../../../Common/FormsControls/TextArea/TextArea";
+import { maxLength, alphaNumeric } from '../../../Common/Validators/validators';
+import { TextArea } from "../../../Common/FormsControls/formControls";
+
+const maxLength10 = maxLength(10)
 
 const ProfilePost = (props) => {
   const { handleSubmit, pristine, submitting } = props
@@ -10,7 +12,7 @@ const ProfilePost = (props) => {
     <form onSubmit={handleSubmit} className={s.addtextContainer}>
       <div className={s.containerTextarea}>
         <Field
-          validate={[requiredField]}
+          validate={[alphaNumeric]}
           component={TextArea}
           name='profile_post'
         ></Field>
