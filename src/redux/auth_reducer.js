@@ -18,7 +18,7 @@ const auth_reducer = (state = initial_state, action) => {
             return {
                 ...state,
                 ...action.data,
-                is_auth: true
+                is_auth: action.is_auth
             }
         case TOGGLE_IS_LOAD:
             return {...state, is_load: action.isLoad}
@@ -28,7 +28,7 @@ const auth_reducer = (state = initial_state, action) => {
     }
 }
 
-export let add_profile_user = (data) => ({ type: ADD_PROFILE_USER, data })
+export let add_profile_user = (data, is_auth) => ({ type: ADD_PROFILE_USER, data, is_auth })
 export let toggle_is_load = (isLoad) => ({type: TOGGLE_IS_LOAD, isLoad})  
 
 //##Thunk - auth_reducer
@@ -37,7 +37,32 @@ export const getAuthThunk = () => {
         dispatch(toggle_is_load(true))
         auth_api.getAuth().then(response => {
             if (response.resultCode === 0) {
-                dispatch(add_profile_user(response.data))
+                dispatch(add_profile_user(response.data, true))
+                dispatch(toggle_is_load(false))
+            }
+        })
+    }
+}
+
+export const loginThunk = (email, password, rememberMe=false) => {
+    return (dispatch) => {
+        dispatch(toggle_is_load(true))
+        auth_api.login(email, password, rememberMe).then(response => {
+            if(response.resultCode === 0) {
+                dispatch(getAuthThunk())
+                dispatch(toggle_is_load(false))
+            }
+        })
+    }
+}
+
+export const logoutThunk = () => {
+    return (dispatch) => {
+        dispatch(toggle_is_load(true))
+        auth_api.logout().then(response => {
+            if(response.resultCode === 0) {
+                dispatch(getAuthThunk(
+                    {id: null, login: null, email: null}, false))
                 dispatch(toggle_is_load(false))
             }
         })

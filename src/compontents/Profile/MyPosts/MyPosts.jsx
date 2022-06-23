@@ -1,12 +1,8 @@
 import React from "react";
 import { reset } from "redux-form";
-import { maxLength, requiredField } from "../../Common/Validators/validators";
 import s from "./MyPosts.module.css";
 import Post from "./Post/Post";
 import ProfilePostForm from "./ProfilePostForm/ProfilePostForm";
-
-
-const maxLength10 = maxLength(10)
 
 const MyPosts = (props) => {
 

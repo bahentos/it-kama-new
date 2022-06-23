@@ -11,10 +11,10 @@ const FormControl = ({input, meta: {touched, error, warning }, ...props}) => {
 }
 
 export const TextArea = (props) => {
-    const {input, meta: {touched, error, warning }, ...restProps} = props
+    const {input, meta, ...restProps} = props
     return <FormControl {...props}> <textarea {...input} {...restProps} /> </FormControl> 
 }
 export const InputField = (props) => {
-    const {input, meta: {touched, error, warning }, ...restProps} = props
+    const {input, meta, ...restProps} = props
     return <FormControl {...props}> <input {...input} {...restProps} type='text' /> </FormControl> 
 }

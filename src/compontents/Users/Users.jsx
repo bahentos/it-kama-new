@@ -2,7 +2,6 @@ import React from "react";
 import s from './Users.module.css'
 import icon_user from './img/userDefaults.svg'
 import { NavLink } from "react-router-dom";
-import { follow_api } from "../../api/api";
 
 
 const Users = (props) => {

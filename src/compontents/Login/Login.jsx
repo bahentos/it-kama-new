@@ -1,17 +1,17 @@
+import { connect } from "react-redux";
 import { Field, reduxForm } from "redux-form";
 import { InputField } from "../Common/FormsControls/formControls";
-import { maxLength, requiredField } from "../Common/Validators/validators";
+import { requiredField } from "../Common/Validators/validators";
 import s from "./Login.module.css";
-
-const maxLength10 = maxLength(10)
+import { loginThunk, logoutThunk } from '../../redux/auth_reducer';
 
 const LoginForm = (props) => {
     return (
         <form onSubmit={props.handleSubmit} action="" className={s.form}>
             <div className={s.login} >
                 <Field 
-                validate={[requiredField, maxLength10]}
-                name="login" 
+                validate={[requiredField]}
+                name="email" 
                 placeholder="Login" 
                 component={InputField} 
                 type="text" />
@@ -19,14 +19,14 @@ const LoginForm = (props) => {
             <div className={s.pass} >
                 <Field 
                 name="password" 
-                validate={[requiredField, maxLength10]}
+                validate={[requiredField]}
                 placeholder="Password" 
                 component={InputField} 
                 type="password" />
             </div>
             <div className={s.remember} >
                 <Field 
-                name="remember" 
+                name="rememberMe" 
                 component="input" 
                 type={"checkbox"} /> <span>Remember me</span>
             </div>
@@ -43,7 +43,8 @@ const LoginReduxForm = reduxForm({
 
 const Login = (props) => {
     const onSubmit = (formData) => {
-        console.log(formData);
+        const {email, password, rememberMe} = formData
+        props.loginThunk(email, password, rememberMe)
     }
     return (
         <div className={s.container} >
@@ -55,4 +56,4 @@ const Login = (props) => {
     )
 }
 
-export default Login
+export default connect(null,{ loginThunk, logoutThunk })(Login)

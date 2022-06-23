@@ -1,12 +1,12 @@
 import axios from "axios"
 
-const samuraijs = axios.create({
-  baseURl: `https://social-network.samuraijs.com/api/1.0/`,
-  withCredentials: true,
-  headers: {
-    'API-KEY': 'cdcab232-0ced-49ce-8cad-05303fd09599'
-  }
-})
+// const samuraijs = axios.create({
+//   baseURl: `https://social-network.samuraijs.com/api/1.0/`,
+//   withCredentials: true,
+//   headers: {
+//     'API-KEY': 'cdcab232-0ced-49ce-8cad-05303fd09599'
+//   }
+// })
 
 axios.defaults.baseURL = `https://social-network.samuraijs.com/api/1.0/`
 axios.defaults.withCredentials = true
@@ -58,6 +58,18 @@ export const follow_api = {
 export const auth_api = {
   getAuth () {
     return axios.get(`auth/me`).then(response => {
+      return response.data
+    })
+  },
+
+  login (email, password, rememberMe = false) {
+    return axios.post('auth/login',{email, password, rememberMe}).then(response => {
+      return response.data
+    })
+  },
+
+  logout () {
+    return axios.delete('auth/login').then(response => {
       return response.data
     })
   }

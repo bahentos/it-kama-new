@@ -41,7 +41,7 @@ const users_reducer = (state = initial_state, action) => {
 
         case TOGGLE_FOLLOW_IS_LOAD:
             if (state.followIsLoad.includes(action.id)) {
-                return { ...state, followIsLoad: state.followIsLoad.filter(item => item != action.id) }
+                return { ...state, followIsLoad: state.followIsLoad.filter(item => item !== action.id) }
             } else {
                 return { ...state, followIsLoad: [...state.followIsLoad, action.id] }
             }

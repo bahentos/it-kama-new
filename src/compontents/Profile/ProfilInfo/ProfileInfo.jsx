@@ -1,5 +1,5 @@
 import s from './ProfileInfo.module.css'
-import sea from '../../../assets/sea_2.jpg'
+// import sea from '../../../assets/sea_2.jpg'
 import userPic from '../../../assets/userDefaults.svg'
 import facebook from './img/facebook_icon.svg'
 import vk from './img/vk_icon.svg'
@@ -9,7 +9,6 @@ import github from './img/github_icon.svg'
 import youtube from './img/youtube_icon.svg'
 import maillink from './img/maillink_icon.svg'
 import www from './img/www_icon.svg'
-import { Link, NavLink } from 'react-router-dom'
 import ProfileStatus from './ProfileStatus/ProfileStatus';
 
 const ProfileInfo = (props) => {

@@ -1,4 +1,3 @@
-import React from "react";
 import { connect } from "react-redux";
 import { add_message } from "../../redux/dialogs_reducer";
 import Dialogs from "./Dialogs";
