@@ -68,3 +68,9 @@
   .selected {
     background: var(--gray-20);
   }
+
+  .formError {
+    color: var(--dark-red);
+    padding: 5px;
+    background-color: var(--light-red);
+  }
