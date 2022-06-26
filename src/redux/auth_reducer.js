@@ -61,7 +61,7 @@ export const logoutThunk = () => {
         dispatch(toggle_is_load(true))
         auth_api.logout().then(response => {
             if(response.resultCode === 0) {
-                dispatch(getAuthThunk(
+                dispatch(add_profile_user(
                     {id: null, login: null, email: null}, false))
                 dispatch(toggle_is_load(false))
             }

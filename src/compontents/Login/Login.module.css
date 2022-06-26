@@ -41,6 +41,30 @@
     
 }
 
-.btn {
 
+.btn {
+    border-radius: 20px;
+    color: var(--light-blue);
+    background-color: var(--ultra-dark-blue);
+    font-size: small;
+    font-weight: bold;
+    text-transform: uppercase;
+    border-radius: 5px;
+    padding: 5px;
+    text-decoration: none;
 }
+
+.btn:hover {
+    -webkit-filter: saturate(250%);
+    -webkit-filter: brightness(200%);
+  }
+  
+  .btn:active {
+      transform: translateY(1px);
+      -webkit-filter: saturate(500%);
+      -webkit-filter: brightness(300%);
+  }
+  
+  .selected {
+    background: var(--gray-20);
+  }

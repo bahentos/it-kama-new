@@ -17,3 +17,16 @@ code {
 *, *::before, *::after {
   box-sizing: border-box;
 }
+
+  button {
+    padding: 0;
+    border: none;
+    font: inherit;
+    color: inherit;
+    background-color: transparent;
+    cursor: pointer;
+    outline: none;
+    border: solid 1px transparent;
+    text-align: center;
+    text-decoration: none;
+}

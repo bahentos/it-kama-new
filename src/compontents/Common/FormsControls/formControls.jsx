@@ -16,5 +16,5 @@ export const TextArea = (props) => {
 }
 export const InputField = (props) => {
     const {input, meta, ...restProps} = props
-    return <FormControl {...props}> <input {...input} {...restProps} type='text' /> </FormControl> 
+    return <FormControl {...props}> <input {...input} {...restProps}/> </FormControl> 
 }

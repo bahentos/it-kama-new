@@ -40,7 +40,32 @@
 }
 
 .follow {
+    border-radius: 20px;
+    background-color: var(--light-blue);
+    color: var(--ultra-dark-blue);
+    font-size: small;
+    font-weight: bold;
+    text-transform: uppercase;
+    border-radius: 5px;
+    padding: 5px;
+    text-decoration: none;
 
+}
+
+.follow:placeholder {
+    line-height: 38px;
+}
+
+
+.follow:hover {
+    -webkit-filter: saturate(70%);
+    -webkit-filter: brightness(70%);
+}
+
+.follow:active {
+    transform: translateY(1px);
+    -webkit-filter: saturate(40%);
+    -webkit-filter: brightness(40%);
 }
 
 .followPreloader {
@@ -80,7 +105,8 @@
 
 .pageNumberContainer {
     display: grid;
-    width: 300px; /*TODO*/
+    width: 300px;
+    /*TODO*/
     grid-auto-flow: column;
     justify-content: start;
 }
@@ -95,6 +121,7 @@
     width: 30px;
     height: 30px;
     border-radius: 15px;
+    cursor: pointer;
 }
 
 .selectedPage {
@@ -102,5 +129,3 @@
     color: white;
     background-color: var(--dark-green);
 }
-
-

@@ -1,7 +1,7 @@
 import React from "react"
 import { connect } from "react-redux"
 import Header from "./Header"
-import { add_profile_user, toggle_is_load, getAuthThunk } from '../../redux/auth_reducer'
+import { add_profile_user, toggle_is_load, getAuthThunk, logoutThunk } from '../../redux/auth_reducer'
 
 class HeaderApiContainer extends React.Component {
     componentDidMount() {
@@ -24,7 +24,7 @@ let mapStateToProps = (state) => {
 
 
 const HeaderContainer = connect(mapStateToProps, {
-    add_profile_user, toggle_is_load, getAuthThunk
+    add_profile_user, toggle_is_load, getAuthThunk, logoutThunk
 })(HeaderApiContainer)
 
 export default HeaderContainer

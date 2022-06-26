@@ -13,8 +13,13 @@ let Get_user_id = (props) => {
 
 class ProfileApiContainer extends React.Component {
     componentDidMount() {
-        this.props.getProfileThunk(this.props.id)
-        this.props.getStatusThunk(this.props.id)
+        if (this.props.id) {
+            this.props.getProfileThunk(this.props.id)
+            this.props.getStatusThunk(this.props.id)
+        } else if (this.props.auth_id) {
+            this.props.getProfileThunk(this.props.auth_id)
+            this.props.getStatusThunk(this.props.auth_id)
+        }
     }
 
     render() {
@@ -26,11 +31,12 @@ let mapStateToProps = (state) => {
     return {
         profile: state.profilePage.profile,
         status: state.profilePage.status,
+        auth_id: state.auth.id
     }
 }
 
 
 export default compose(
-    connect(mapStateToProps, { getProfileThunk, getStatusThunk, updateStatusThunk}),
+    connect(mapStateToProps, { getProfileThunk, getStatusThunk, updateStatusThunk }),
     withAuthRedirect,
 )(Get_user_id)

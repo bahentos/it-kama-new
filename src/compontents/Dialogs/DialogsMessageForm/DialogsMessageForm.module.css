@@ -33,3 +33,14 @@
     background:  url("img/addAnswerIcon.svg") no-repeat 50% 50%;
     background-size: 24px;
   }
+
+  .inputAnswer button:hover {
+    -webkit-filter: saturate(250%);
+    -webkit-filter: brightness(200%);
+  }
+  
+  .inputAnswer button:active {
+      transform: translateY(1px);
+      -webkit-filter: saturate(500%);
+      -webkit-filter: brightness(300%);
+  }

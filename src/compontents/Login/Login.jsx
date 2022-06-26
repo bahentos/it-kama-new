@@ -20,10 +20,10 @@ const LoginForm = (props) => {
             <div className={s.pass} >
                 <Field
                     name="password"
+                    type="password"
                     validate={[requiredField]}
                     placeholder="Password"
-                    component={InputField}
-                    type="password" />
+                    component={InputField}/>
             </div>
             <div className={s.remember} >
                 <Field
