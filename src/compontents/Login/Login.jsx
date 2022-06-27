@@ -54,7 +54,6 @@ const Login = (props) => {
             <div className={s.formContainer} >
                 <div className={s.text} >Login</div>
                 <LoginReduxForm onSubmit={onSubmit} />
-                {props.is_auth && <Navigate to='/profile' /> }
             </div>
         </div>
     )

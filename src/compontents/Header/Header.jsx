@@ -1,14 +1,8 @@
 import s from './Header.module.css'
 import logo from '../../assets/logo.png'
-import { Navigate, NavLink } from 'react-router-dom'
-import { useState, useEffect } from 'react'
+import { NavLink } from 'react-router-dom'
 
 const Header = (props) => {
-
-    useEffect(() => {
-        !props.isAuth ? <Navigate to='/login' /> : <Navigate to='/profile' />
-    }, [props.isAuth])
-
 
     return (
         <header className={s.header}>

@@ -1,13 +1,24 @@
+import { useEffect } from "react";
+import { connect } from "react-redux";
 import { Route, Routes } from "react-router-dom";
 import "./App.css";
+import Preloader from "./compontents/Common/Preloader/Preloader";
 import DialogsContainer from "./compontents/Dialogs/DialogsContainer";
 import HeaderContainer from "./compontents/Header/HeaderContainer";
 import Login from "./compontents/Login/Login";
 import Navbar from "./compontents/Navbar/Navbar";
 import ProfileContainer from "./compontents/Profile/ProfileContainer";
 import UsersContainer from "./compontents/Users/UsersContainer";
+import { initialize } from './redux/app_reducer';
 
 const App = (props) => {
+  useEffect(() => {
+    props.initialize()
+  }, [])
+
+  if (!props.initialized) {
+    return <Preloader />
+  }
   return (
     <div className="all-wrapper">
       <div className="space">
@@ -49,4 +60,8 @@ const App = (props) => {
   )
 };
 
-export default App;
+const mapStateToProps = (state) => ({
+  initialized: state.app.initialized
+})
+
+export default connect(mapStateToProps, { initialize })(App);
