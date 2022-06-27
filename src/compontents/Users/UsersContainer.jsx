@@ -41,6 +41,5 @@ let mapStateToProps = (state) => {
 
 
 export default compose(
-  connect(mapStateToProps,{toggle_follow_is_load, getUsers, changePage, followUser}),
-  withAuthRedirect
-)(UsersApiComponent)
+  connect(mapStateToProps,{toggle_follow_is_load, getUsers, changePage, followUser})
+  )(UsersApiComponent)

@@ -5,6 +5,7 @@ import Profile from "./Profile"
 import { useParams } from 'react-router-dom'
 import { withAuthRedirect } from '../../hoc/withAuthRedirect';
 import { compose } from 'redux';
+import Login from "../Login/Login"
 
 let Get_user_id = (props) => {
     const params = useParams();
@@ -23,7 +24,8 @@ class ProfileApiContainer extends React.Component {
     }
 
     render() {
-        return <Profile {...this.props} />
+        return this.props.id || this.props.auth_id ? <Profile {...this.props} /> :
+        <Login />
     }
 }
 
@@ -38,5 +40,4 @@ let mapStateToProps = (state) => {
 
 export default compose(
     connect(mapStateToProps, { getProfileThunk, getStatusThunk, updateStatusThunk }),
-    withAuthRedirect,
 )(Get_user_id)
