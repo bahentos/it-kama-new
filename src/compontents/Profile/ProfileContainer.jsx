@@ -3,9 +3,10 @@ import { connect } from "react-redux"
 import { getProfileThunk, getStatusThunk, updateStatusThunk } from '../../redux/profile_reducer'
 import Profile from "./Profile"
 import { useParams } from 'react-router-dom'
-import { withAuthRedirect } from '../../hoc/withAuthRedirect';
 import { compose } from 'redux';
 import Login from "../Login/Login"
+import { getProfileSelector, getProfileStatusSelector } from '../../redux/profile_selectors';
+import { getAuthUserIdSelector } from "../../redux/auth_selectos"
 
 let Get_user_id = (props) => {
     const params = useParams();
@@ -31,9 +32,9 @@ class ProfileApiContainer extends React.Component {
 
 let mapStateToProps = (state) => {
     return {
-        profile: state.profilePage.profile,
-        status: state.profilePage.status,
-        auth_id: state.auth.id
+        profile: getProfileSelector(state),
+        status: getProfileStatusSelector(state),
+        auth_id: getAuthUserIdSelector(state)
     }
 }
 

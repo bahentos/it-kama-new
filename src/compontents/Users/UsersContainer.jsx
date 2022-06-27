@@ -11,6 +11,7 @@ import loading from './../../assets/isLoad_5.svg'
 import Preloader from "../Common/Preloader/Preloader";
 import { withAuthRedirect } from '../../hoc/withAuthRedirect';
 import { compose } from 'redux';
+import { getPageSizeSelector, getUsersSelector, getPageCountSelector, getUsersCountSelector, getCurrentPageSelector, getUsersIsLoadSelector, getFollowIsLoadSelector } from '../../redux/users_selectors';
 
 class UsersApiComponent extends React.Component {
   componentDidMount() {
@@ -29,13 +30,13 @@ class UsersApiComponent extends React.Component {
 
 let mapStateToProps = (state) => {
   return {
-    users: state.usersPage.users,
-    page_size: state.usersPage.page_size,
-    page_count: state.usersPage.page_count,
-    total_users_count: state.usersPage.total_users_count,
-    current_page: state.usersPage.current_page,
-    is_load: state.usersPage.is_load,
-    followIsLoad: state.usersPage.followIsLoad
+    users: getUsersSelector(state),
+    page_size: getPageSizeSelector(state),
+    page_count: getPageCountSelector(state),
+    total_users_count: getUsersCountSelector(state),
+    current_page: getCurrentPageSelector(state),
+    is_load: getUsersIsLoadSelector(state),
+    followIsLoad: getFollowIsLoadSelector(state)
   }
 }
 
