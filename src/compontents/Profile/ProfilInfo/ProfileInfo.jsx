@@ -10,6 +10,7 @@ import youtube from './img/youtube_icon.svg'
 import maillink from './img/maillink_icon.svg'
 import www from './img/www_icon.svg'
 import ProfileStatus from './ProfileStatus/ProfileStatus';
+import ProfileStatusHook from './ProfileStatus/ProfileStatusHook'
 
 const ProfileInfo = (props) => {
   return (
@@ -27,7 +28,7 @@ const ProfileInfo = (props) => {
       </div>
       {/* Статус */}
       <div className={s.aboutText} >
-        <ProfileStatus {...props} />
+        <ProfileStatusHook {...props} />
         {props.profile.aboutMe && <div className={s.aboutMe}  >{props.profile.aboutMe}</div>}
         {props.profile.lookingForAJob && <div className={s.jobMessage}>{props.profile.lookingForAJobDescription}</div>}
       </div>
