@@ -9,7 +9,6 @@ import github from './img/github_icon.svg'
 import youtube from './img/youtube_icon.svg'
 import maillink from './img/maillink_icon.svg'
 import www from './img/www_icon.svg'
-import ProfileStatus from './ProfileStatus/ProfileStatus';
 import ProfileStatusHook from './ProfileStatus/ProfileStatusHook'
 
 const ProfileInfo = (props) => {

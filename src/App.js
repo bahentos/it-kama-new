@@ -14,6 +14,7 @@ import { initialize } from './redux/app_reducer';
 const App = (props) => {
   useEffect(() => {
     props.initialize()
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [])
 
   if (!props.initialized) {

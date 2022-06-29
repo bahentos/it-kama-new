@@ -4,7 +4,6 @@ import { InputField } from "../Common/FormsControls/formControls";
 import { requiredField } from "../Common/Validators/validators";
 import s from "./Login.module.css";
 import { loginThunk, logoutThunk } from '../../redux/auth_reducer';
-import { Navigate } from "react-router-dom";
 
 const LoginForm = (props) => {
     return (

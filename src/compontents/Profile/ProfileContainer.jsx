@@ -1,4 +1,4 @@
-import React from "react"
+import React, { useEffect } from "react"
 import { connect } from "react-redux"
 import { getProfileThunk, getStatusThunk, updateStatusThunk } from '../../redux/profile_reducer'
 import Profile from "./Profile"
@@ -13,21 +13,20 @@ let Get_user_id = (props) => {
     return <ProfileApiContainer {...props} id={params.id} />
 }
 
-class ProfileApiContainer extends React.Component {
-    componentDidMount() {
-        if (this.props.id) {
-            this.props.getProfileThunk(this.props.id)
-            this.props.getStatusThunk(this.props.id)
-        } else if (this.props.auth_id) {
-            this.props.getProfileThunk(this.props.auth_id)
-            this.props.getStatusThunk(this.props.auth_id)
+const ProfileApiContainer = (props) => {
+    useEffect(() => {
+        if (props.id) {
+            props.getProfileThunk(props.id)
+            props.getStatusThunk(props.id)
+        } else if (props.auth_id) {
+            props.getProfileThunk(props.auth_id)
+            props.getStatusThunk(props.auth_id)
         }
-    }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+    }, [props.id, props.auth_id])
 
-    render() {
-        return this.props.id || this.props.auth_id ? <Profile {...this.props} /> :
-        <Login />
-    }
+
+    return props.id || props.auth_id ? <Profile {...props} /> : <Login />
 }
 
 let mapStateToProps = (state) => {

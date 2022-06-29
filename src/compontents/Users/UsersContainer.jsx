@@ -1,5 +1,4 @@
-
-import React from "react";
+import React, { useEffect } from "react";
 import { connect } from "react-redux";
 import {
   toggle_follow_is_load,
@@ -9,22 +8,20 @@ import {
 import Users from "./Users";
 import loading from './../../assets/isLoad_5.svg'
 import Preloader from "../Common/Preloader/Preloader";
-import { withAuthRedirect } from '../../hoc/withAuthRedirect';
 import { compose } from 'redux';
 import { getPageSizeSelector, getUsersSelector, getPageCountSelector, getUsersCountSelector, getCurrentPageSelector, getUsersIsLoadSelector, getFollowIsLoadSelector } from '../../redux/users_selectors';
 
-class UsersApiComponent extends React.Component {
-  componentDidMount() {
-    this.props.getUsers(this.props.current_page, this.props.page_size)
-  }
+const UsersApiComponent = (props) => {
+  useEffect(() => {
+    props.getUsers(props.current_page, props.page_size)
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [props.current_page, props.page_size])
 
-  on_page_change = (p) => {
-    this.props.changePage(p, this.props.page_size)
+  let on_page_change = (p) => {
+    props.changePage(p, props.page_size)
   }
+  return props.is_load ? <Preloader src={loading} alt={'preloader'} /> : <Users {...props} on_page_change={on_page_change} />
 
-  render() {
-    return this.props.is_load ? <Preloader src={loading} alt={'preloader'} /> : <Users {...this.props} on_page_change={this.on_page_change} />
-  }
 }
 
 
@@ -42,5 +39,5 @@ let mapStateToProps = (state) => {
 
 
 export default compose(
-  connect(mapStateToProps,{toggle_follow_is_load, getUsers, changePage, followUser})
-  )(UsersApiComponent)
+  connect(mapStateToProps, { toggle_follow_is_load, getUsers, changePage, followUser })
+)(UsersApiComponent)
