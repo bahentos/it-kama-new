@@ -1,0 +1,27 @@
+
+.pageNumberContainer {
+    display: grid;
+    width: 300px;
+    /*TODO*/
+    grid-auto-flow: column;
+    justify-content: start;
+}
+
+.pageNumber {
+    display: grid;
+    justify-content: center;
+    align-items: center;
+    color: var(--dark-green);
+    font-size: large;
+    cursor: pointer;
+    width: 30px;
+    height: 30px;
+    border-radius: 15px;
+    cursor: pointer;
+}
+
+.selectedPage {
+    font-weight: bold;
+    color: white;
+    background-color: var(--dark-green);
+}

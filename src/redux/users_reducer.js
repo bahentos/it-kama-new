@@ -1,4 +1,5 @@
 import { follow_api, users_api } from "../api/api";
+import { updateObjectInArrayForFollowed } from '../compontents/Common/functions/object-helper';
 
 const FOLLOW = 'FOLLOW';
 const SET_USERS = 'SET_USERS';
@@ -29,12 +30,7 @@ const users_reducer = (state = initial_state, action) => {
         case FOLLOW:
             return {
                 ...state,
-                users: state.users.map(u => {
-                    if (u.id === action.userId) {
-                        return { ...u, followed: !u.followed }
-                    }
-                    return u
-                })
+                users: updateObjectInArrayForFollowed(state.users, action.userId, 'id')
             }
         case TOGGLE_IS_LOAD:
             return { ...state, is_load: action.isLoad }
@@ -70,47 +66,37 @@ export let toggle_follow_is_load = (id) => ({ type: TOGGLE_FOLLOW_IS_LOAD, id })
 
 
 //##Thunks - users_reducer
-export const getUsers = (current_page, page_size) => {
-    return (dispatch) => {
-        dispatch(toggle_is_load(true))
-        users_api.getUsers(current_page, page_size).then(response => {
-            dispatch(set_users(response.items))
-            dispatch(set_total_count_users(response.totalCount))
-            dispatch(toggle_is_load(false))
-        })
-    }
+export const getUsers = (current_page, page_size) => async dispatch => {
+    dispatch(toggle_is_load(true))
+    let response = await users_api.getUsers(current_page, page_size)
+    dispatch(set_users(response.items))
+    dispatch(set_total_count_users(response.totalCount))
+    dispatch(toggle_is_load(false))
 }
 
-export const changePage = (page, page_size) => {
-    return (dispatch) => {
-        dispatch(set_current_page(page))
-        dispatch(toggle_is_load(true))
-        users_api.getUsers(page, page_size = 10).then(response => {
-            dispatch(set_users(response.items))
-            dispatch(toggle_is_load(false))
-        })
-    }
-} 
+export const changePage = (page, page_size) => async dispatch => {
+    dispatch(set_current_page(page))
+    dispatch(toggle_is_load(true))
+    let response = await users_api.getUsers(page, page_size = 10)
+    dispatch(set_users(response.items))
+    dispatch(toggle_is_load(false))
+}
 
-export const followUser = (followed, id) => {
-    return (dispatch) => {
-        if (!followed) {
-            dispatch(toggle_follow_is_load(id))
-            follow_api.getFollow(id).then(response => {
-                if (response === 0) {
-                    dispatch(follow(id))
-                }
-                dispatch(toggle_follow_is_load(id))
-            })
-        } else {
-            dispatch(toggle_follow_is_load(id))
-            follow_api.deleteFollow(id).then(response => {
-                if (response === 0) {
-                    dispatch(follow(id))
-                }
-                dispatch(toggle_follow_is_load(id))
-            })
+export const followUser = (followed, id) => async dispatch => {
+    if (!followed) {
+        dispatch(toggle_follow_is_load(id))
+        let response = await follow_api.getFollow(id)
+        if (response === 0) {
+            dispatch(follow(id))
         }
+        dispatch(toggle_follow_is_load(id))
+    } else {
+        dispatch(toggle_follow_is_load(id))
+        let response = await follow_api.deleteFollow(id)
+        if (response === 0) {
+            dispatch(follow(id))
+        }
+        dispatch(toggle_follow_is_load(id))
     }
 }
 

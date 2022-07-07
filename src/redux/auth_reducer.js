@@ -1,3 +1,4 @@
+import { async } from "q";
 import { stopSubmit } from "redux-form";
 import { auth_api } from "../api/api";
 
@@ -33,44 +34,35 @@ export let add_profile_user = (data, is_auth) => ({ type: ADD_PROFILE_USER, data
 export let toggle_is_load = (isLoad) => ({ type: TOGGLE_IS_LOAD, isLoad })
 
 //##Thunk - auth_reducer
-export const getAuthThunk = () => {
-    return (dispatch) => {
-        dispatch(toggle_is_load(true))
-      return  auth_api.getAuth().then(response => {
-            if (response.resultCode === 0) {
-                dispatch(add_profile_user(response.data, true))
-                dispatch(toggle_is_load(false))
-            }
-        })
+export const getAuthThunk = () => async dispatch => {
+    dispatch(toggle_is_load(true))
+    let response = await auth_api.getAuth()
+    if (response.resultCode === 0) {
+        dispatch(add_profile_user(response.data, true))
+        dispatch(toggle_is_load(false))
     }
 }
 
-export const loginThunk = (email, password, rememberMe = false) => {
-    return (dispatch) => {
-        dispatch(toggle_is_load(true))
-        auth_api.login(email, password, rememberMe).then(response => {
-            if (response.resultCode === 0) {
-                dispatch(getAuthThunk())
-                dispatch(toggle_is_load(false))
-            } else {
-                let messages = response.messages.length > 0 ? 
-                response.messages : 'Some error'
-                dispatch(stopSubmit('login', { _error: messages }))
-            }
-        })
+export const loginThunk = (email, password, rememberMe = false) => async dispatch => {
+    dispatch(toggle_is_load(true))
+    let response = await auth_api.login(email, password, rememberMe)
+    if (response.resultCode === 0) {
+        dispatch(getAuthThunk())
+        dispatch(toggle_is_load(false))
+    } else {
+        let messages = response.messages.length > 0 ?
+            response.messages : 'Some error'
+        dispatch(stopSubmit('login', { _error: messages }))
     }
 }
 
-export const logoutThunk = () => {
-    return (dispatch) => {
-        dispatch(toggle_is_load(true))
-        auth_api.logout().then(response => {
-            if (response.resultCode === 0) {
-                dispatch(add_profile_user(
-                    { id: null, login: null, email: null }, false))
-                dispatch(toggle_is_load(false))
-            }
-        })
+export const logoutThunk = () => async dispatch => {
+    dispatch(toggle_is_load(true))
+    let response = await auth_api.logout()
+    if (response.resultCode === 0) {
+        dispatch(add_profile_user(
+            { id: null, login: null, email: null }, false))
+        dispatch(toggle_is_load(false))
     }
 }
 

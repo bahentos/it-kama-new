@@ -23,12 +23,10 @@ export let initializationSuccess = () => ({ type: INITIALIZATION_SUCCESS })
 
 
 //##Thunk - auth_reducer
-export const initialize = () => {
-    return (dispatch) => {
-        Promise.all([dispatch(getAuthThunk())]).then(response => {
-            dispatch(initializationSuccess())
-        })
-    }
+export const initialize = () => dispatch => {
+    Promise.all([dispatch(getAuthThunk())]).then(response => {
+        dispatch(initializationSuccess())
+    })
 }
 
 

@@ -1,6 +1,7 @@
 import { profile_api } from "../api/api";
 
 const ADD_POST = 'ADD_POST';
+const DELETE_POST = 'DELETE_POST';
 const SET_PROFILE = 'SET_PROFILE';
 const SET_STATUS = 'SET_STATUS';
 
@@ -28,12 +29,15 @@ const profile_reducer = (state = initial_state, action) => {
                 ...state,
                 postsData: [...state.postsData, newPost],
             }
-        
-        case SET_PROFILE: 
-            return {...state, profile: action.profile}
-        
-        case SET_STATUS: 
-            return {...state, status: action.status}
+
+        case DELETE_POST:
+            return { ...state, postsData: state.postsData.filter(p => p !== action.postId) }
+
+        case SET_PROFILE:
+            return { ...state, profile: action.profile }
+
+        case SET_STATUS:
+            return { ...state, status: action.status }
 
         default:
             return state;
@@ -41,19 +45,18 @@ const profile_reducer = (state = initial_state, action) => {
 }
 
 
-export let add_post= (post) => ({type: ADD_POST, post})  
-export let set_profile = (profile) => ({type: SET_PROFILE, profile})
-export let set_status = (status) => ({type: SET_STATUS, status})
+export let add_post = (post) => ({ type: ADD_POST, post })
+export let delete_post = (postId) => ({ type: DELETE_POST, postId })
+export let set_profile = (profile) => ({ type: SET_PROFILE, profile })
+export let set_status = (status) => ({ type: SET_STATUS, status })
 
 
 //##Thunk - profile_reducer
-export const getProfileThunk = (id) => {
-    return (dispatch) => {
-        profile_api.getProfile(id).then(response => {
-            dispatch(set_profile(response))
-        })
-    }
+export const getProfileThunk = (id) => async dispatch => {
+    let response = await profile_api.getProfile(id)
+    dispatch(set_profile(response))
 }
+
 
 export const getStatusThunk = (id) => {
     return (dispatch) => {
@@ -63,13 +66,10 @@ export const getStatusThunk = (id) => {
     }
 }
 
-export const updateStatusThunk = (status) => {
-    return (dispatch) => {
-        profile_api.putStatus(status).then(response => {
-            if(response.resultCode === 0) {
-                dispatch(set_status(status))
-            }
-        })
+export const updateStatusThunk = (status) => async dispatch => {
+    let response = await profile_api.putStatus(status)
+    if (response.resultCode === 0) {
+        dispatch(set_status(status))
     }
 }
 
