@@ -1,4 +1,3 @@
-import { async } from "q";
 import { stopSubmit } from "redux-form";
 import { auth_api } from "../api/api";
 
