@@ -7,3 +7,4 @@ ____
 - [Login](components/login.md)
 - [Navbar](components/navbar.md)
 - [Profile](components/profile.md)
+- [Users](components/users.md)

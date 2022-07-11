@@ -30,7 +30,9 @@
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "jest",
-    "eject": "react-scripts eject"
+    "eject": "react-scripts eject",
+    "predeploy": "npm run build",
+    "deploy": "gh-pages -d build"
   },
   "eslintConfig": {
     "extends": [
@@ -64,6 +66,8 @@
     }
   },
   "devDependencies": {
+    "gh-pages": "^4.0.0",
     "react-test-render": "^1.1.2"
-  }
+  },
+  "homepage": "https://bahentos.github.io/it-kama-new"
 }
