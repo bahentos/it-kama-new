@@ -14,7 +14,13 @@ const Users = ({users, ...props}) => {
         <div className={s.fon}>
 
             <div className={s.container}>
-                <Paginator {...props} />
+                <Paginator 
+                total_items_count={props.total_users_count}
+                current_page={props.current_page}
+                on_page_change={props.on_page_change}
+                page_size={props.page_size}
+                portion_size={10}
+                {...props} />
                 {users_div}
             </div>
         </div>

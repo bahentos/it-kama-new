@@ -1,8 +1,8 @@
 
 .pageNumberContainer {
     display: grid;
-    width: 300px;
     /*TODO*/
+    gap: 5px;
     grid-auto-flow: column;
     justify-content: start;
 }
@@ -14,8 +14,10 @@
     color: var(--dark-green);
     font-size: large;
     cursor: pointer;
-    width: 30px;
+    min-width: 30px;
+    width: 100%;
     height: 30px;
+    padding: 5px;
     border-radius: 15px;
     cursor: pointer;
 }
@@ -25,3 +27,26 @@
     color: white;
     background-color: var(--dark-green);
 }
+.btn {
+    color: var(--ultra-dark-green);
+    font-weight: bold;
+    font-size: large;
+  }
+
+  .btn:hover {
+    -webkit-filter: saturate(250%);
+    -webkit-filter: brightness(200%);
+  }
+  
+  .btn:active {
+      transform: translateY(1px);
+      -webkit-filter: saturate(500%);
+      -webkit-filter: brightness(300%);
+  }
+
+  .btn .disable {
+    color:var(--bluegray-10);
+    transform: inherit;
+      -webkit-filter: inherit;
+      -webkit-filter: inherit;
+  }
