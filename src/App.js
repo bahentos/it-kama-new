@@ -1,20 +1,23 @@
-import { useEffect } from "react";
+import React, { useEffect, Suspense } from "react";
 import { connect } from "react-redux";
 import { Route, Routes } from "react-router-dom";
 import "./App.css";
 import Preloader from "./compontents/Common/Preloader/Preloader";
-import DialogsContainer from "./compontents/Dialogs/DialogsContainer";
-import HeaderContainer from "./compontents/Header/HeaderContainer";
 import Login from "./compontents/Login/Login";
 import Navbar from "./compontents/Navbar/Navbar";
 import ProfileContainer from "./compontents/Profile/ProfileContainer";
 import UsersContainer from "./compontents/Users/UsersContainer";
 import { initialize } from './redux/app_reducer';
+import HeaderContainer from './compontents/Header/HeaderContainer';
+import { withSuspense } from "./compontents/Common/hoc/withSuspense";
+// import DialogsContainer from './compontents/Dialogs/DialogsContainer';
+
+const DialogsContainer = React.lazy(() => import('./compontents/Dialogs/DialogsContainer'));
 
 const App = (props) => {
   useEffect(() => {
     props.initialize()
-  // eslint-disable-next-line react-hooks/exhaustive-deps
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [])
 
   if (!props.initialized) {
@@ -35,8 +38,14 @@ const App = (props) => {
         </div>
         <div className="app-wrapper-content">
           <Routes>
-            <Route path='/dialogs' element={<DialogsContainer />} />
-            <Route path='/dialogs/:id' element={<DialogsContainer />} />
+            <Route path='/dialogs' element={
+              <Suspense fallback={<Preloader />} >
+                <DialogsContainer />
+              </Suspense>} />
+            <Route path='/dialogs/:id' element={
+              <Suspense fallback={<Preloader />} >
+                <DialogsContainer />
+              </Suspense>} />
             <Route path='/' element={<ProfileContainer />} />
             <Route path='/profile' element={<ProfileContainer />} />
             <Route path='/profile/:id' element={<ProfileContainer />} />
