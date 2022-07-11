@@ -34,7 +34,7 @@ const Paginator = ({ current_page, on_page_change, page_size, total_items_count,
     }
 
     let portions = pages.filter(portion => {
-        if (portion >= leftPortionNumber && portion <= RightPortionNumber)   portion
+        if (portion >= leftPortionNumber && portion <= RightPortionNumber) return  portion
     })
 
     return (
