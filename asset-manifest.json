@@ -1,0 +1,38 @@
+{
+  "files": {
+    "main.css": "/it-kama-new/static/css/main.5e95e5ad.css",
+    "main.js": "/it-kama-new/static/js/main.22a57b83.js",
+    "static/css/783.ac9363ee.chunk.css": "/it-kama-new/static/css/783.ac9363ee.chunk.css",
+    "static/js/783.75d9be27.chunk.js": "/it-kama-new/static/js/783.75d9be27.chunk.js",
+    "static/js/787.29aa09c0.chunk.js": "/it-kama-new/static/js/787.29aa09c0.chunk.js",
+    "static/media/logo.png": "/it-kama-new/static/media/logo.6c13f9ff26a1ea7a723c.png",
+    "static/media/isLoad_5.svg": "/it-kama-new/static/media/isLoad_5.111f969256ac59fb5f6d2351cfb7f8f7.svg",
+    "static/media/github_icon.svg": "/it-kama-new/static/media/github_icon.05d40fa52d728e790e5f66a160b433e8.svg",
+    "static/media/www_icon.svg": "/it-kama-new/static/media/www_icon.33058000c271acde52ca5bb88f538e95.svg",
+    "static/media/settings.svg": "/it-kama-new/static/media/settings.55277e285887c23fa15f.svg",
+    "static/media/userDefaults.svg": "/it-kama-new/static/media/userDefaults.5034898e4a2e5e5323c034a37b86cfb4.svg",
+    "static/media/users.svg": "/it-kama-new/static/media/users.b25b4d177cdb4d3ee882.svg",
+    "static/media/newspaper.svg": "/it-kama-new/static/media/newspaper.e33fb1c804a2cc81984d.svg",
+    "static/media/instagram_icon.svg": "/it-kama-new/static/media/instagram_icon.8d80796b0e0f39c603c1d52e1bc8f457.svg",
+    "static/media/chat.svg": "/it-kama-new/static/media/chat.39899c7364d3fa58ce60.svg",
+    "static/media/twitter_icon.svg": "/it-kama-new/static/media/twitter_icon.6c26194224e8aa785284e286f32f08e9.svg",
+    "static/media/music.svg": "/it-kama-new/static/media/music.c2117fb4e6a17583aeeb.svg",
+    "static/media/youtube_icon.svg": "/it-kama-new/static/media/youtube_icon.6b755588291dbfad791b93ffa72f21d4.svg",
+    "static/media/profiles.svg": "/it-kama-new/static/media/profiles.58c797aada4fe26fd141.svg",
+    "static/media/vk_icon.svg": "/it-kama-new/static/media/vk_icon.95c4a6c33433d66d3ab311951c277e7b.svg",
+    "index.html": "/it-kama-new/index.html",
+    "static/media/maillink_icon.svg": "/it-kama-new/static/media/maillink_icon.2a0476c6589cca8929c2eb9c3d6a9b18.svg",
+    "static/media/addAnswerIcon.svg": "/it-kama-new/static/media/addAnswerIcon.0ad201f62a1ca0314eeb.svg",
+    "static/media/triangle.svg": "/it-kama-new/static/media/triangle.e07dcff0768a8c657bbd3fe36b5bf7f5.svg",
+    "static/media/facebook_icon.svg": "/it-kama-new/static/media/facebook_icon.509f102a0fef274c14edf668e90c9f41.svg",
+    "main.5e95e5ad.css.map": "/it-kama-new/static/css/main.5e95e5ad.css.map",
+    "main.22a57b83.js.map": "/it-kama-new/static/js/main.22a57b83.js.map",
+    "783.ac9363ee.chunk.css.map": "/it-kama-new/static/css/783.ac9363ee.chunk.css.map",
+    "783.75d9be27.chunk.js.map": "/it-kama-new/static/js/783.75d9be27.chunk.js.map",
+    "787.29aa09c0.chunk.js.map": "/it-kama-new/static/js/787.29aa09c0.chunk.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.5e95e5ad.css",
+    "static/js/main.22a57b83.js"
+  ]
+}
