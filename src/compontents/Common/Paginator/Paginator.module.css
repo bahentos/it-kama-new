@@ -27,8 +27,29 @@
     color: white;
     background-color: var(--dark-green);
 }
+
+.arrow {
+  color: var(--dark-green);
+  font-weight: bold;
+  font-size: large;
+}
+
+.arrow:hover {
+  -webkit-filter: saturate(250%);
+  -webkit-filter: brightness(200%);
+}
+
+.arrow:active {
+  transform: translateY(1px);
+  -webkit-filter: saturate(500%);
+  -webkit-filter: brightness(300%);
+}
+
 .btn {
+    background-color: var(--main-green);
     color: var(--ultra-dark-green);
+    padding: 5px;
+    border-radius: 10px;
     font-weight: bold;
     font-size: large;
   }
@@ -44,9 +65,7 @@
       -webkit-filter: brightness(300%);
   }
 
-  .btn .disable {
-    color:var(--bluegray-10);
-    transform: inherit;
-      -webkit-filter: inherit;
-      -webkit-filter: inherit;
+  .disable {
+    color:var(--bluegray-40);
+    cursor: auto;
   }

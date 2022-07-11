@@ -9,9 +9,7 @@ import ProfileContainer from "./compontents/Profile/ProfileContainer";
 import UsersContainer from "./compontents/Users/UsersContainer";
 import { initialize } from './redux/app_reducer';
 import HeaderContainer from './compontents/Header/HeaderContainer';
-import { withSuspense } from "./compontents/Common/hoc/withSuspense";
 // import DialogsContainer from './compontents/Dialogs/DialogsContainer';
-
 const DialogsContainer = React.lazy(() => import('./compontents/Dialogs/DialogsContainer'));
 
 const App = (props) => {
