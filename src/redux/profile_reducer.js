@@ -4,6 +4,7 @@ const ADD_POST = 'ADD_POST';
 const DELETE_POST = 'DELETE_POST';
 const SET_PROFILE = 'SET_PROFILE';
 const SET_STATUS = 'SET_STATUS';
+const UPDATE_PHOTO = 'UPDATE_PHOTO';
 
 let initial_state = {
     profile: null,
@@ -38,6 +39,17 @@ const profile_reducer = (state = initial_state, action) => {
 
         case SET_STATUS:
             return { ...state, status: action.status }
+        
+        case UPDATE_PHOTO:
+            return { ...state,
+                profile: {
+                    ...state.profile,
+                    photos: {
+                        small: action.small,
+                        large: action.large
+                    }
+                }
+             }
 
         default:
             return state;
@@ -49,6 +61,7 @@ export let add_post = (post) => ({ type: ADD_POST, post })
 export let delete_post = (postId) => ({ type: DELETE_POST, postId })
 export let set_profile = (profile) => ({ type: SET_PROFILE, profile })
 export let set_status = (status) => ({ type: SET_STATUS, status })
+export let save_photo_success = (small, large) => ({ type: UPDATE_PHOTO, small, large})
 
 
 //##Thunk - profile_reducer
@@ -70,6 +83,14 @@ export const updateStatusThunk = (status) => async dispatch => {
     let response = await profile_api.putStatus(status)
     if (response.resultCode === 0) {
         dispatch(set_status(status))
+    }
+}
+
+export const savePhoto = (file) => async dispatch => {
+    let response = await profile_api.putPhoto(file)
+    if (response.resultCode === 0) {
+        let {small, large} = response.data.photos
+        dispatch(save_photo_success(small, large))
     }
 }
 

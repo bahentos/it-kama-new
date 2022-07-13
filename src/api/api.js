@@ -38,6 +38,18 @@ export const profile_api = {
     return axios.put(`profile/status`, {status: status} ).then(response => {
       return response.data
     })
+  },
+
+  putPhoto (file) {
+    let photoData = new FormData()
+    photoData.append('image', file)
+    return axios.put(`profile/photo`, photoData,{
+      headers: {
+        "Content-Type": "multipart/form-data",
+      }
+    }).then(response => {
+      return response.data
+    })
   }
 }
 

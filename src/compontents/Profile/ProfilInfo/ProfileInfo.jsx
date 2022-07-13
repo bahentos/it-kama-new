@@ -1,6 +1,4 @@
 import s from './ProfileInfo.module.css'
-// import sea from '../../../assets/sea_2.jpg'
-import userPic from '../../../assets/userDefaults.svg'
 import facebook from './img/facebook_icon.svg'
 import vk from './img/vk_icon.svg'
 import twitter from './img/twitter_icon.svg'
@@ -10,6 +8,7 @@ import youtube from './img/youtube_icon.svg'
 import maillink from './img/maillink_icon.svg'
 import www from './img/www_icon.svg'
 import ProfileStatusHook from './ProfileStatus/ProfileStatusHook'
+import ProfileAvatar from './ProfileAvatar/ProfileAvatar';
 
 const ProfileInfo = (props) => {
   return (
@@ -19,12 +18,11 @@ const ProfileInfo = (props) => {
         <img className={s.fon} src={sea} alt='sea' />
       </div> */}
       {/* Аватар и имя */}
-      <div className={s.containerAvatar}>
-        {!props.profile.photos.small ?
-          <img className={s.avatar} src={userPic} alt="avatar" />
-          : <img className={s.avatar} src={props.profile.photos.small} alt="avatar" />}
-        <div className={s.name}>{props.profile.fullName}</div>
-      </div>
+      <ProfileAvatar 
+      small={props.profile.photos.small} 
+      isOwner={props.isOwner} 
+      fullName={props.profile.fullName} 
+      savePhoto={props.savePhoto} />
       {/* Статус */}
       <div className={s.aboutText} >
         <ProfileStatusHook {...props} />
@@ -46,13 +44,3 @@ const ProfileInfo = (props) => {
 };
 
 export default ProfileInfo
-
-
-//   "lookingForAJob": true,
-//   "lookingForAJobDescription": "не ищу, а дурачусь",
-//   "userId": 2,
-//   "photos": {
-//     "small": "https://social-network.samuraijs.com/activecontent/images/users/2/user-small.jpg?v=0",
-//     "large": "https://social-network.samuraijs.com/activecontent/images/users/2/user.jpg?v=0"
-//   }
-// }
