@@ -7,6 +7,9 @@
   background-color: var(--bluegray-10);
   padding-left: 10px;
 }
+.editButton{
+  padding-bottom: 20px;
+}
 
 .image {
 
@@ -21,6 +24,7 @@
 
 .aboutText {
   padding: 0px 10px 10px 0px;
+  
 }
 .status {
   padding: 0px 10px 10px 0px;
@@ -41,4 +45,18 @@
 .item {
   width: 25px;
   cursor: pointer;
+  color: var(--dark-blue);
+}
+
+.labels {
+  font-weight: 600;
+  color: var(--ultra-dark-blue);
+}
+
+.aboutMe{
+  color: var(--dark-blue);
+}
+
+.jobMessage {
+  color: var(--dark-blue);
 }

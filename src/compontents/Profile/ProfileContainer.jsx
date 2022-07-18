@@ -1,6 +1,6 @@
 import React, { useEffect } from "react"
 import { connect } from "react-redux"
-import { getProfileThunk, getStatusThunk, updateStatusThunk, savePhoto} from '../../redux/profile_reducer'
+import { getProfileThunk, getStatusThunk, updateStatusThunk, savePhoto, saveProfile} from '../../redux/profile_reducer'
 import Profile from "./Profile"
 import { useParams } from 'react-router-dom'
 import { compose } from 'redux';
@@ -43,5 +43,5 @@ let mapStateToProps = (state) => {
 
 
 export default compose(
-    connect(mapStateToProps, { getProfileThunk, getStatusThunk, updateStatusThunk, savePhoto }),
+    connect(mapStateToProps, { getProfileThunk, getStatusThunk, updateStatusThunk, savePhoto, saveProfile }),
 )(Get_user_id)

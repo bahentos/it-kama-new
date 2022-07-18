@@ -39,6 +39,12 @@ export const profile_api = {
       return response.data
     })
   },
+  
+  saveProfile (formData) {
+    return axios.put(`profile`, formData ).then(response => {
+      return response.data
+    })
+  },
 
   putPhoto (file) {
     let photoData = new FormData()

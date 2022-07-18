@@ -94,4 +94,11 @@ export const savePhoto = (file) => async dispatch => {
     }
 }
 
+export const saveProfile = (formData, id) => async dispatch => {
+    let response = await profile_api.saveProfile(formData)
+    if (response.resultCode === 0) {
+        getProfileThunk(id)
+    }
+}
+
 export default profile_reducer

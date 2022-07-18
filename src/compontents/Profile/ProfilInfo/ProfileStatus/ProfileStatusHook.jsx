@@ -1,9 +1,9 @@
 import React, { useEffect, useState } from "react";
 import s from "./ProfileStatus.module.css";
 
-const ProfileStatusHook = (props) => {
+const ProfileStatusHook = ({status, updateStatusThunk, ...props}) => {
     const [editMode, setEditMode] = useState(false)
-    const [statusLocal, setStatus] = useState(props.status)
+    const [statusLocal, setStatus] = useState(status)
 
     let toggleEditStatus = () => {
         setEditMode(!editMode)
@@ -12,7 +12,7 @@ const ProfileStatusHook = (props) => {
     let updateStatus = (event) => {
         event.repeat = false
         if (event.code === 'Enter') {
-            props.updateStatusThunk(statusLocal)
+            updateStatusThunk(statusLocal)
             setEditMode(!editMode)
         }
     }
@@ -22,13 +22,13 @@ const ProfileStatusHook = (props) => {
     }
 
     useEffect(() => {
-        setStatus(props.status)
-    }, [props.status])
+        setStatus(status)
+    }, [status])
 
     return (
         <div className={s.container} >
             {!editMode ?
-                <div onDoubleClick={toggleEditStatus} className={s.status} >{props.status || '----------'}</div> :
+                <div onDoubleClick={toggleEditStatus} className={s.status} >{status || '----------'}</div> :
                 <input
                     onChange={onChangeStatus}
                     onKeyDown={updateStatus}

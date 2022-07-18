@@ -5,7 +5,6 @@ import Post from "./Post/Post";
 import ProfilePostForm from "./ProfilePostForm/ProfilePostForm";
 
 const MyPosts = (props) => {
-  console.log('render MyPosts');
   let postsElement = props.postsData.map((post, index) => {
     return (
       <Post
