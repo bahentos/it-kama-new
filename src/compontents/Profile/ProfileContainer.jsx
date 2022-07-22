@@ -5,7 +5,7 @@ import Profile from "./Profile"
 import { useParams } from 'react-router-dom'
 import { compose } from 'redux';
 import Login from "../Login/Login"
-import { getProfileSelector, getProfileStatusSelector } from '../../redux/profile_selectors';
+import { getProfileItems, getProfileSelector, getProfileStatusSelector } from '../../redux/profile_selectors';
 import { getAuthUserIdSelector } from "../../redux/auth_selectos"
 
 let Get_user_id = (props) => {
@@ -32,6 +32,7 @@ const ProfileApiContainer = (props) => {
 
     return props.id || props.auth_id ? <Profile {...props} /> : <Login />
 }
+
 
 let mapStateToProps = (state) => {
     return {

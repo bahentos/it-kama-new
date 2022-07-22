@@ -17,6 +17,20 @@ const ProfileInfo = (props) => {
     dispatch(reset('profile_update_form'))
   }
 
+  const initialValues = () => {
+    if(props.profile) {
+      return {
+        aboutMe: props.profile.aboutMe,
+        fullName: props.profile.fullName,
+        lookingForAJob: props.profile.lookingForAJob,
+        lookingForAJobDescription: props.profile.lookingForAJobDescription
+      }
+    } else {
+      return {}
+    }
+  }
+
+  
   return (
     <div className={s.content}>
       {/* Шапка */}
@@ -43,10 +57,10 @@ const ProfileInfo = (props) => {
           contacts={props.profile.contacts} /> :
         <ProfileUpdateForm
           onSubmit={onSubmitProfile}
-          fullName={props.profile.fullName}
           setEdit={setEdit}
           savePhoto={props.savePhoto}
           isOwner={props.isOwner}
+          initialValues={initialValues()}
         />}
     </div>
   );

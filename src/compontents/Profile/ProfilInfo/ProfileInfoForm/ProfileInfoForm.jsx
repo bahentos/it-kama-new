@@ -10,7 +10,7 @@ const ProfileInfoForm = ({
     savePhoto, setEdit,
     ...custom
 }) => {
-
+    debugger
     const theme = createTheme({
         palette: {
             primary: {
@@ -196,7 +196,10 @@ const ProfileInfoForm = ({
 }
 
 const ProfileUpdateForm = reduxForm({
-    form: 'profile_update_form'
-})(ProfileInfoForm)
+    form: 'profile_update_form',
+    initialized: true,
+    enableReinitialize: true,
+}
+)(ProfileInfoForm)
 
 export default ProfileUpdateForm
