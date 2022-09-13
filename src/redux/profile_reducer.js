@@ -87,17 +87,19 @@ export const updateStatusThunk = (status) => async dispatch => {
 }
 
 export const savePhoto = (file) => async dispatch => {
-    let response = await profile_api.putPhoto(file)
+    const response = await profile_api.putPhoto(file)
     if (response.resultCode === 0) {
         let {small, large} = response.data.photos
         dispatch(save_photo_success(small, large))
     }
 }
 
-export const saveProfile = (formData, id) => async dispatch => {
-    let response = await profile_api.saveProfile(formData)
+export const saveProfile = (formData) => async (dispatch, getState) => {
+    const userId = getState().auth.id
+    const response = await profile_api.saveProfile(formData)
+    console.log(response.resultCode);
     if (response.resultCode === 0) {
-        getProfileThunk(id)
+        dispatch(getProfileThunk(userId))
     }
 }
 

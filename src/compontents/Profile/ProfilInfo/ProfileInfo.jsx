@@ -13,18 +13,14 @@ const ProfileInfo = (props) => {
   }
 
   let onSubmitProfile = (formData, dispatch) => {
-    props.saveProfile(formData, props.auth_id)
+    props.saveProfile(formData)
     dispatch(reset('profile_update_form'))
+    setEdit()
   }
 
   const initialValues = () => {
     if(props.profile) {
-      return {
-        aboutMe: props.profile.aboutMe,
-        fullName: props.profile.fullName,
-        lookingForAJob: props.profile.lookingForAJob,
-        lookingForAJobDescription: props.profile.lookingForAJobDescription
-      }
+      return props.profile
     } else {
       return {}
     }

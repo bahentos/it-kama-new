@@ -1,16 +1,21 @@
 import s from "./ProfileInfoForm.module.css";
-import { Field, reduxForm } from 'redux-form';
+import { Field, initialize, reduxForm } from 'redux-form';
 import { muiInputField, renderTextArea } from "../../../Common/FormsControls/formControls";
 import { Button, createTheme, Grid, ThemeProvider } from "@mui/material";
 import { renderSelectField } from "../../../Common/FormsControls/muiSelected";
+import { useDispatch } from "react-redux";
+import { useEffect } from "react";
 
 const ProfileInfoForm = ({
     handleSubmit, pristine,
     submitting, classes,
     savePhoto, setEdit,
-    ...custom
-}) => {
-    debugger
+    ...props }) => {
+    const dispatch = useDispatch()
+    useEffect(()=> {
+        dispatch(initialize('profile_update_form', props.initialValues))
+    }, [props.initialValues])
+
     const theme = createTheme({
         palette: {
             primary: {
@@ -197,8 +202,7 @@ const ProfileInfoForm = ({
 
 const ProfileUpdateForm = reduxForm({
     form: 'profile_update_form',
-    initialized: true,
-    enableReinitialize: true,
+    enableReinitialize: true
 }
 )(ProfileInfoForm)
 
