@@ -1,3 +1,4 @@
+import { stopSubmit } from "redux-form";
 import { profile_api } from "../api/api";
 
 const ADD_POST = 'ADD_POST';
@@ -100,6 +101,8 @@ export const saveProfile = (formData) => async (dispatch, getState) => {
     console.log(response.resultCode);
     if (response.resultCode === 0) {
         dispatch(getProfileThunk(userId))
+    } else {
+        dispatch(stopSubmit('profile_update_form', { _error: response.data.messages[0] }))
     }
 }
 

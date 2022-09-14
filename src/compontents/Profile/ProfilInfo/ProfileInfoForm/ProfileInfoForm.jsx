@@ -9,7 +9,7 @@ import { useEffect } from "react";
 const ProfileInfoForm = ({
     handleSubmit, pristine,
     submitting, classes,
-    savePhoto, setEdit,
+    savePhoto, setEdit, error,
     ...props }) => {
     const dispatch = useDispatch()
     useEffect(() => {
