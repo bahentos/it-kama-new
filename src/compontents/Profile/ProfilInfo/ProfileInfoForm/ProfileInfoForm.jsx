@@ -12,9 +12,11 @@ const ProfileInfoForm = ({
     savePhoto, setEdit,
     ...props }) => {
     const dispatch = useDispatch()
-    useEffect(()=> {
+    useEffect(() => {
         dispatch(initialize('profile_update_form', props.initialValues))
     }, [props.initialValues])
+
+    const contacts = props.initialValues.contacts
 
     const theme = createTheme({
         palette: {
@@ -99,78 +101,21 @@ const ProfileInfoForm = ({
                     <label>Контакты</label>
                 </div>
                 <Grid container spacing={3}>
-                    <Grid item className={s.textInput}>
-                        <Field
-                            id="standard-basic"
-                            variant="standard"
-                            label={'github'}
-                            component={muiInputField}
-                            name='github'
-                        ></Field>
-                    </Grid>
-                    <Grid item className={s.textInput}>
-                        <Field
-                            id="standard-basic"
-                            variant="standard"
-                            label={'vk'}
-                            component={muiInputField}
-                            name='vk'
-                        ></Field>
-                    </Grid>
-                    <Grid item className={s.textInput}>
-                        <Field
-                            id="standard-basic"
-                            variant="standard"
-                            label={'facebook'}
-                            component={muiInputField}
-                            name='facebook'
-                        ></Field>
-                    </Grid>
-                    <Grid item className={s.textInput}>
-                        <Field
-                            id="standard-basic"
-                            variant="standard"
-                            label={'instagram'}
-                            component={muiInputField}
-                            name='instagram'
-                        ></Field>
-                    </Grid>
-                    <Grid item className={s.textInput}>
-                        <Field
-                            id="standard-basic"
-                            variant="standard"
-                            label={'twitter'}
-                            component={muiInputField}
-                            name='twitter'
-                        ></Field>
-                    </Grid>
-                    <Grid item className={s.textInput}>
-                        <Field
-                            id="standard-basic"
-                            variant="standard"
-                            label={'youtube'}
-                            component={muiInputField}
-                            name='youtube'
-                        ></Field>
-                    </Grid>
-                    <Grid item className={s.textInput}>
-                        <Field
-                            id="standard-basic"
-                            variant="standard"
-                            label={'website'}
-                            component={muiInputField}
-                            name='website'
-                        ></Field>
-                    </Grid>
-                    <Grid item className={s.textInput}>
-                        <Field
-                            id="standard-basic"
-                            variant="standard"
-                            label={'mainLink'}
-                            component={muiInputField}
-                            name='mainLink'
-                        ></Field>
-                    </Grid>
+                    {
+                        Object.keys(contacts).map(name => {
+                            return (
+                                <Grid item className={s.textInput}>
+                                    <Field
+                                        id="standard-basic"
+                                        variant="standard"
+                                        label={name}
+                                        component={muiInputField}
+                                        name={`contacts.${name}`}
+                                    ></Field>
+                                </Grid>
+                            )
+                        })
+                    }
                 </Grid>
                 <Grid
                     container
