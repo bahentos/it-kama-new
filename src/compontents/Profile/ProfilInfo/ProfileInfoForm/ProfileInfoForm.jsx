@@ -38,6 +38,8 @@ const ProfileInfoForm = ({
 
     return (
         <form onSubmit={handleSubmit} className={s.container}>
+                            {error && <div className={s.formError}>{error}</div>}
+
             <ThemeProvider theme={theme}>
                 {/* Имя и работа */}
                 <Grid
@@ -104,7 +106,9 @@ const ProfileInfoForm = ({
                     {
                         Object.keys(contacts).map(name => {
                             return (
-                                <Grid item className={s.textInput}>
+                                <Grid item 
+                                key={`div_${name}`}
+                                className={s.textInput}>
                                     <Field
                                         id="standard-basic"
                                         variant="standard"

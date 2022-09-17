@@ -6,9 +6,11 @@ const DELETE_POST = 'DELETE_POST';
 const SET_PROFILE = 'SET_PROFILE';
 const SET_STATUS = 'SET_STATUS';
 const UPDATE_PHOTO = 'UPDATE_PHOTO';
+const SET_EDIT = 'SET_EDIT';
 
 let initial_state = {
     profile: null,
+    isEdit: false,
     status: '',
 
     postsData: [
@@ -34,6 +36,9 @@ const profile_reducer = (state = initial_state, action) => {
 
         case DELETE_POST:
             return { ...state, postsData: state.postsData.filter(p => p !== action.postId) }
+        
+        case SET_EDIT:
+            return { ...state, isEdit: !state.isEdit }
 
         case SET_PROFILE:
             return { ...state, profile: action.profile }
@@ -62,6 +67,7 @@ export let add_post = (post) => ({ type: ADD_POST, post })
 export let delete_post = (postId) => ({ type: DELETE_POST, postId })
 export let set_profile = (profile) => ({ type: SET_PROFILE, profile })
 export let set_status = (status) => ({ type: SET_STATUS, status })
+export let set_edit = () => ({ type: SET_EDIT})
 export let save_photo_success = (small, large) => ({ type: UPDATE_PHOTO, small, large})
 
 
@@ -98,11 +104,11 @@ export const savePhoto = (file) => async dispatch => {
 export const saveProfile = (formData) => async (dispatch, getState) => {
     const userId = getState().auth.id
     const response = await profile_api.saveProfile(formData)
-    console.log(response.resultCode);
     if (response.resultCode === 0) {
         dispatch(getProfileThunk(userId))
+        dispatch(set_edit())
     } else {
-        dispatch(stopSubmit('profile_update_form', { _error: response.data.messages[0] }))
+        dispatch(stopSubmit('profile_update_form', { _error: response.messages[0]}))
     }
 }
 

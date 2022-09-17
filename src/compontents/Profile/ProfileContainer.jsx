@@ -1,11 +1,11 @@
 import React, { useEffect } from "react"
 import { connect } from "react-redux"
-import { getProfileThunk, getStatusThunk, updateStatusThunk, savePhoto, saveProfile} from '../../redux/profile_reducer'
+import { getProfileThunk, getStatusThunk, updateStatusThunk, savePhoto, saveProfile, set_edit} from '../../redux/profile_reducer'
 import Profile from "./Profile"
 import { useParams } from 'react-router-dom'
 import { compose } from 'redux';
 import Login from "../Login/Login"
-import { getProfileItems, getProfileSelector, getProfileStatusSelector } from '../../redux/profile_selectors';
+import { getIsEditSelector, getProfileSelector, getProfileStatusSelector } from '../../redux/profile_selectors';
 import { getAuthUserIdSelector } from "../../redux/auth_selectos"
 
 let Get_user_id = (props) => {
@@ -38,11 +38,12 @@ let mapStateToProps = (state) => {
     return {
         profile: getProfileSelector(state),
         status: getProfileStatusSelector(state),
+        isEdit: getIsEditSelector(state),
         auth_id: getAuthUserIdSelector(state)
     }
 }
 
 
 export default compose(
-    connect(mapStateToProps, { getProfileThunk, getStatusThunk, updateStatusThunk, savePhoto, saveProfile }),
+    connect(mapStateToProps, { getProfileThunk, getStatusThunk, updateStatusThunk, savePhoto, saveProfile, set_edit }),
 )(Get_user_id)

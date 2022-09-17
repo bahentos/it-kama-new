@@ -7,15 +7,10 @@ import { useState } from 'react';
 import { reset } from "redux-form";
 
 const ProfileInfo = (props) => {
-  const [isEdit, setIsEdit] = useState(false)
-  let setEdit = () => {
-    setIsEdit(!isEdit)
-  }
 
   let onSubmitProfile = (formData, dispatch) => {
     props.saveProfile(formData)
     dispatch(reset('profile_update_form'))
-    setEdit()
   }
 
   const initialValues = () => {
@@ -43,17 +38,17 @@ const ProfileInfo = (props) => {
       <div className={s.status}>
         <ProfileStatusHook {...props} />
       </div>
-      {!isEdit ?
+      {!props.isEdit ?
         <ProfileInfoBlock
-          setEdit={setEdit}
+          setEdit={props.set_edit}
           isOwner={props.isOwner}
           aboutMe={props.profile.aboutMe}
           lookingForAJob={props.profile.lookingForAJob}
           lookingForAJobDescription={props.profile.lookingForAJobDescription}
           contacts={props.profile.contacts} /> :
         <ProfileUpdateForm
+          setEdit={props.set_edit}
           onSubmit={onSubmitProfile}
-          setEdit={setEdit}
           savePhoto={props.savePhoto}
           isOwner={props.isOwner}
           initialValues={initialValues()}

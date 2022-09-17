@@ -32,3 +32,9 @@ padding: 30px 0 60px 0 ;
 .spacer {
     padding-left: 20px;
 }
+
+.formError {
+    color: var(--dark-red);
+    padding: 5px;
+    background-color: var(--light-red);
+  }
