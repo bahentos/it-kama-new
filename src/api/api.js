@@ -21,6 +21,15 @@ export const users_api = {
 
 }
 
+export const security_api = {
+  getCaptcha (current_page = 1, page_size = 10) {
+    return axios.get(`security/get-captcha-url`).then(response => {
+        return response.data
+      })
+  }
+
+}
+
 export const profile_api = {
   getProfile (id) {
     return axios.get(`profile/${!id ? 1608 : id}`).then(response => {
@@ -80,8 +89,8 @@ export const auth_api = {
     })
   },
 
-  login (email, password, rememberMe = false) {
-    return axios.post('auth/login',{email, password, rememberMe}).then(response => {
+  login (email, password, rememberMe = false, captcha = null) {
+    return axios.post('auth/login',{email, password, rememberMe, captcha}).then(response => {
       return response.data
     })
   },

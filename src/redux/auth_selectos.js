@@ -20,3 +20,7 @@ export const getAuthEmailSelector = (state) => {
 export const getAuthIsLoadSelector = (state) => {
     return state.auth.is_load
 }
+
+export const getAuthCaptchaURLSelector = (state) => {
+    return state.auth.captchaUrl
+}
