@@ -13,8 +13,15 @@ import HeaderContainer from './compontents/Header/HeaderContainer';
 const DialogsContainer = React.lazy(() => import('./compontents/Dialogs/DialogsContainer'));
 
 const App = (props) => {
+  const catchAllUnhandledErrors = (event) => {
+    alert(`UNHANDLED PROMISE REJECTION: ${event.reason}`)
+    console.warn(`UNHANDLED PROMISE REJECTION: ${event.reason}`);
+  }
+
   useEffect(() => {
     props.initialize()
+    window.addEventListener("unhandledrejection", catchAllUnhandledErrors);
+    return () => {window.removeEventListener("unhandledrejection", catchAllUnhandledErrors);}
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [])
 
