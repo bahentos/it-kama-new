@@ -1,27 +1,17 @@
+import { InitialAppType } from '../types/types';
 import { getAuthThunk } from './auth_reducer';
 
 const INITIALIZATION_SUCCESS = 'INITIALIZATION_SUCCESS';
 
 
-export type ActionOnlyTypeType = {
-    type: string
-}
-
-type InitializationSuccessActionType = {
-    type: typeof INITIALIZATION_SUCCESS
-}
+export type ActionOnlyTypeType = {type: string}
 
 
-export type InitialStateType = {
-    initialized: boolean 
-}
-
-
-let initial_state: InitialStateType = {
+let initial_state: InitialAppType = {
     initialized: false
 }
 
-const app_reducer = (state = initial_state, action: any): InitialStateType => {
+const app_reducer = (state = initial_state, action: any): InitialAppType => {
     switch (action.type) {
         case INITIALIZATION_SUCCESS:
             return {
@@ -34,6 +24,8 @@ const app_reducer = (state = initial_state, action: any): InitialStateType => {
     }
 }
 
+
+type InitializationSuccessActionType = {type: typeof INITIALIZATION_SUCCESS}
 export let initializationSuccess = (): InitializationSuccessActionType => ({ type: INITIALIZATION_SUCCESS })
 
 

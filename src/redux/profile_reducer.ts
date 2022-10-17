@@ -1,5 +1,7 @@
+import { Action } from "redux";
 import { stopSubmit } from "redux-form";
 import { profile_api } from "../api/api";
+import { InitialProfileType } from "../types/types";
 
 const ADD_POST = 'ADD_POST';
 const DELETE_POST = 'DELETE_POST';
@@ -9,20 +11,7 @@ const UPDATE_PHOTO = 'UPDATE_PHOTO';
 const SET_EDIT = 'SET_EDIT';
 
 
-type PostDataType = {
-    id: number,
-    post: string,
-    like_count: number
-}
-type InitialStateType = {
-    profile: object | null,
-    isEdit: boolean,
-    status: string,
-    postsData: PostDataType[]
-}
-
-
-let initial_state: InitialStateType = {
+let initial_state: InitialProfileType = {
     profile: null,
     isEdit: false,
     status: '',
@@ -35,7 +24,7 @@ let initial_state: InitialStateType = {
     ],
 }
 
-const profile_reducer = (state = initial_state, action) => {
+const profile_reducer = (state = initial_state, action: any): InitialProfileType => {
     switch (action.type) {
         case ADD_POST:
             let newPost = {
@@ -76,38 +65,48 @@ const profile_reducer = (state = initial_state, action) => {
     }
 }
 
+type AddPostType = { type: typeof ADD_POST, post: string }
+export let add_post = (post: string): AddPostType => ({ type: ADD_POST, post })
 
-export let add_post = (post) => ({ type: ADD_POST, post })
-export let delete_post = (postId) => ({ type: DELETE_POST, postId })
-export let set_profile = (profile) => ({ type: SET_PROFILE, profile })
-export let set_status = (status) => ({ type: SET_STATUS, status })
+type DeletePostType = { type: typeof DELETE_POST, postId: number }
+export let delete_post = (postId: number): DeletePostType => ({ type: DELETE_POST, postId })
+
+type SetProfileType = { type: typeof SET_PROFILE, profile: ProfileType }
+export let set_profile = (profile: ProfileType): SetProfileType => ({ type: SET_PROFILE, profile })
+
+type SetStatusType = { type: typeof SET_STATUS, status: string }
+export let set_status = (status: string): SetStatusType => ({ type: SET_STATUS, status })
+
+type SetEditType = { type: typeof SET_EDIT}
 export let set_edit = () => ({ type: SET_EDIT})
-export let save_photo_success = (small, large) => ({ type: UPDATE_PHOTO, small, large})
+
+type SavePhotoSuccessType = { type: typeof UPDATE_PHOTO, small: string, large: string}
+export let save_photo_success = (small: string, large: string): SavePhotoSuccessType => ({ type: UPDATE_PHOTO, small, large})
 
 
 //##Thunk - profile_reducer
-export const getProfileThunk = (id) => async dispatch => {
+export const getProfileThunk = (id) => async (dispatch: any) => {
     let response = await profile_api.getProfile(id)
     dispatch(set_profile(response))
 }
 
 
-export const getStatusThunk = (id) => {
-    return (dispatch) => {
+export const getStatusThunk = (id: number) => {
+    return (dispatch: any) => {
         profile_api.getStatus(id).then(response => {
             dispatch(set_status(response))
         })
     }
 }
 
-export const updateStatusThunk = (status) => async dispatch => {
+export const updateStatusThunk = (status: string) => async (dispatch: any) => {
     let response = await profile_api.putStatus(status)
     if (response.resultCode === 0) {
         dispatch(set_status(status))
     }
 }
 
-export const savePhoto = (file) => async dispatch => {
+export const savePhoto = (file: File) => async (dispatch: any) => {
     const response = await profile_api.putPhoto(file)
     if (response.resultCode === 0) {
         let {small, large} = response.data.photos
@@ -115,7 +114,7 @@ export const savePhoto = (file) => async dispatch => {
     }
 }
 
-export const saveProfile = (formData) => async (dispatch, getState) => {
+export const saveProfile = (formData: object) => async (dispatch: any, getState: any) => {
     const userId = getState().auth.id
     const response = await profile_api.saveProfile(formData)
     if (response.resultCode === 0) {

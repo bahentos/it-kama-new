@@ -1,21 +1,13 @@
 import { stopSubmit } from "redux-form";
 import { auth_api, security_api } from "../api/api";
+import { InitialAuthType } from "../types/types";
 
 const ADD_PROFILE_USER = "ADD_PROFILE_USER";
 const TOGGLE_IS_LOAD = "TOGGLE_IS_LOAD";
 const SET_CAPTCHA = "SET_CAPTCHA";
 
-type InitialStateType = {
-  id: number | null;
-  login: string | null;
-  email: string | null;
-  is_auth: boolean;
-  //индикатор загрузки информации с сервера
-  is_load: boolean;
-  captchaUrl: string | null;
-};
 
-let initial_state: InitialStateType = {
+let initial_state: InitialAuthType = {
   id: null,
   login: null,
   email: null,

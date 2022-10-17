@@ -1,14 +1,8 @@
+import { InitialDialogsType } from "../types/types";
+
 const ADD_MESSAGE = 'ADD_MESSAGE';
 
-type DialogType = {id: number, name: string}
-type MessageType = {id: number, message: string}
-type InitialStateType = {
-    dialogsData: DialogType[],
-    messagesData: MessageType[],
-    newMessageText: string | null
-}
-
-let initial_state: InitialStateType = {
+let initial_state: InitialDialogsType = {
     dialogsData: [
         { id: 1, name: 'John' },
         { id: 2, name: 'Anny' },

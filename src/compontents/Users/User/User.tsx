@@ -2,9 +2,19 @@ import React from "react";
 import s from './User.module.css'
 import icon_user from '../img/userDefaults.svg'
 import { NavLink } from "react-router-dom";
+import { UsersType } from "../../../types/types";
 
 
-const User = ({ user, index, followIsLoad, followUser }) => {
+
+type PropsUserType = {
+    user: UsersType, 
+    index: number, 
+    followIsLoad: number[], 
+    followUser: (followed: boolean, id: number) => void
+}
+
+
+const User: React.FC<PropsUserType> = ({ user, index, followIsLoad, followUser }) => {
     return (
         <div className={s.user} key={index + '_user'}>
             <div className={s.imgContainer}>

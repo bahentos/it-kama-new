@@ -1,15 +1,24 @@
 import s from './Paginator.module.css'
-import { useState } from 'react';
+import React, { useState } from 'react';
 import { useEffect } from 'react';
 
+export type PropsPaginatorType = {
+    current_page: number, 
+    on_page_change: (page: number) => void, 
+    page_size: number, 
+    total_items_count: number, 
+    portion_size?: number
+}
 
-const Paginator = ({ current_page, on_page_change, page_size, total_items_count, portion_size }) => {
+
+const Paginator: React.FC<PropsPaginatorType> = ({ current_page, on_page_change, 
+    page_size, total_items_count, portion_size }) => {
     const [curentPortion, setCurentPortion] = useState(Math.ceil(current_page / portion_size))
     useEffect(() => {
         setCurentPortion(Math.ceil(current_page / portion_size))
     }, [current_page])
 
-    let goToPage = () => {
+    let goToPage = (): void => {
         let page = prompt('Укажите страницу')
         if (page <= 0 || page === undefined) {
             on_page_change(1)
@@ -28,7 +37,7 @@ const Paginator = ({ current_page, on_page_change, page_size, total_items_count,
     let RightPortionNumber = curentPortion * portion_size
 
 
-    let pages = []
+    let pages: number[] = []
     for (let i = 1; i <= pages_count; i++) {
         pages.push(i)
     }
