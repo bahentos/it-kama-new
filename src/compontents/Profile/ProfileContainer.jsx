@@ -26,7 +26,6 @@ const ProfileApiContainer = (props) => {
             props.getProfileThunk(props.auth_id)
             props.getStatusThunk(props.auth_id)
         }
-        // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [props.id, props.auth_id])
 
 

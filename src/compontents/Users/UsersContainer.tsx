@@ -31,7 +31,6 @@ type PropsUsersApiType = {
 const UsersApiComponent = (props: PropsUsersApiType) => {
   useEffect(() => {
     props.getUsers(props.current_page, props.page_size)
-  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [props.current_page, props.page_size])
 
   let on_page_change = (p) => {

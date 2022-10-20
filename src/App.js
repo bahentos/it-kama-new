@@ -6,10 +6,9 @@ import Preloader from "./compontents/Common/Preloader/Preloader";
 import Login from "./compontents/Login/Login";
 import Navbar from "./compontents/Navbar/Navbar";
 import ProfileContainer from "./compontents/Profile/ProfileContainer";
-import UsersContainer from "./compontents/Users/UsersContainer";
+import UsersContainer from "./compontents/Users/UsersContainer.tsx";
 import { initialize } from './redux/app_reducer';
 import HeaderContainer from './compontents/Header/HeaderContainer';
-// import DialogsContainer from './compontents/Dialogs/DialogsContainer';
 const DialogsContainer = React.lazy(() => import('./compontents/Dialogs/DialogsContainer'));
 
 const App = (props) => {
@@ -22,7 +21,6 @@ const App = (props) => {
     props.initialize()
     window.addEventListener("unhandledrejection", catchAllUnhandledErrors);
     return () => {window.removeEventListener("unhandledrejection", catchAllUnhandledErrors);}
-    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [])
 
   if (!props.initialized) {
