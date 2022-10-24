@@ -28,12 +28,12 @@ type PropsUsersApiType = {
 }
 
 
-const UsersApiComponent = (props: PropsUsersApiType) => {
+const UsersApiComponent: React.FC<PropsUsersApiType> = (props: PropsUsersApiType) => {
   useEffect(() => {
     props.getUsers(props.current_page, props.page_size)
   }, [props.current_page, props.page_size])
 
-  let on_page_change = (p) => {
+  let on_page_change = (p: number) => {
     props.changePage(p, props.page_size)
   }
   return props.is_load ? <Preloader src={loading} alt={'preloader'} /> : <Users {...props} on_page_change={on_page_change} />
