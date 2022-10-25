@@ -1,6 +1,10 @@
 {
   "compilerOptions": {
     /* Visit https://aka.ms/tsconfig to read more about this file */
+    "plugins": [ 
+      { "name": "css-module-types" },
+      { "name": "typescript-plugin-css-modules" }
+     ],
 
     /* Projects */
     "incremental": true,                                 /* Включить инкрементную компиляцию путем чтения/записи информации из предыдущих компиляций в файл на диске */
@@ -105,5 +109,6 @@
     "skipLibCheck": true,                                /* Skip type checking all .d.ts files. */
     // "include": ["src/**/*"],                             /* Файлы TypeScript должны ввести проверку */
     "exclude": ["node_modules", "build"],                /* Файлы, которые не нужно вводить, проверять */
+
   }
 }

@@ -2,7 +2,7 @@ import React from "react";
 import DialogItem from "./Dialogitem/DialogItem";
 import s from "./Dialogs.module.css";
 import Message from "./Message/Message";
-import { InjectedFormProps, reset } from 'redux-form';
+import { reset } from 'redux-form';
 import DialogsMessageForm from "./DialogsMessageForm/DialogsMessageForm";
 import { DialogType, MessageType } from "../../types/types";
 
@@ -12,13 +12,6 @@ type PropsDialogsType = {
   messagesData: MessageType[],
   add_message: (dialog_message_input: string) => void
 }
-
-type MessageInputType = {
-  dialog_message_input: string,
-  props: any
-}
-
-type PropsOnSubmitType = InjectedFormProps & MessageInputType
 
 const Dialogs: React.FC<PropsDialogsType> = ({dialogsData, messagesData, add_message, ...props}) => {
 

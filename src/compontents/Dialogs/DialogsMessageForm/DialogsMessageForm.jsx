@@ -2,7 +2,6 @@ import React from "react";
 import s from "./DialogsMessageForm.module.css";
 import { Field, reduxForm } from 'redux-form';
 
-
 const DialogsMessage = (props) => {
   const { handleSubmit, pristine, submitting } = props
   return (

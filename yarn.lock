@@ -2523,6 +2523,11 @@
   resolved "https://registry.yarnpkg.com/@tsconfig/node16/-/node16-1.0.3.tgz#472eaab5f15c1ffdd7f8628bd4c4f753995ec79e"
   integrity sha512-yOlFc+7UtL/89t2ZhjPvvB/DeAr3r+Dq58IgzsFkOAvVC6NMJXmCGjbptdXdR9qsX7pKcTL+s87FtYREi2dEEQ==
 
+"@typed/compose@^1.0.0":
+  version "1.0.0"
+  resolved "https://registry.yarnpkg.com/@typed/compose/-/compose-1.0.0.tgz#e4e5fc7132b84c701acb5346a361da28fad63081"
+  integrity sha512-ElBfbJJ3TiSHbC98iPGiPrMv7yZgE1p7HuWM8v03oG5vkp1aSaWV33WgohB2IOca9fpxPcNydF0r9wJFJl4/YA==
+
 "@types/aria-query@^4.2.0":
   version "4.2.2"
   resolved "https://registry.yarnpkg.com/@types/aria-query/-/aria-query-4.2.2.tgz#ed4e0ad92306a704f9fb132a0cfcf77486dbe2bc"
@@ -4462,6 +4467,15 @@ css-minimizer-webpack-plugin@^3.2.0:
     schema-utils "^4.0.0"
     serialize-javascript "^6.0.0"
     source-map "^0.6.1"
+
+css-module-types@^0.2.2:
+  version "0.2.2"
+  resolved "https://registry.yarnpkg.com/css-module-types/-/css-module-types-0.2.2.tgz#4ebd4d59c49f9abd29c3c00849d6c93dbda18d5d"
+  integrity sha512-vO5YQZWWe4jJf/T/MXV1sxq55z3Op2Q0B4mA9Erd9BtycQK/pXKQWh1Qykb0BTt6l8TV1jlRC3KP+uh1cDHnkA==
+  dependencies:
+    icss-utils "^3.0.1"
+    postcss "^6.0.14"
+    postcss-icss-selectors "^2.0.3"
 
 css-parse@~2.0.0:
   version "2.0.0"

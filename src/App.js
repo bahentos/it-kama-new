@@ -10,7 +10,7 @@ import UsersContainer from "./compontents/Users/UsersContainer";
 import { initialize } from './redux/app_reducer';
 import HeaderContainer from './compontents/Header/HeaderContainer';
 // import DialogsContainer from './compontents/Dialogs/DialogsContainer';
-const DialogsContainer = React.lazy(() => import('./compontents/Dialogs/DialogsContainer'));
+const DialogsContainer = React.lazy(() => import('./compontents/Dialogs/DialogsContainer.tsx'));
 
 const App = (props) => {
   const catchAllUnhandledErrors = (event) => {
