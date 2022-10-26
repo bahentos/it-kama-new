@@ -54,7 +54,7 @@ const App = (props) => {
             <Route path='/' element={<ProfileContainer />} />
             <Route path='/profile' element={<ProfileContainer />} />
             <Route path='/profile/:id' element={<ProfileContainer />} />
-            <Route path='/users' element={<UsersContainer />} />
+            <Route path='/users' element={<UsersContainer pageTitle={'Самурай'} />} />
             <Route path='/login' element={<Login />} />
             <Route
               path="*"
